@@ -16,7 +16,7 @@ function Login(props) {
 
   useEffect(() => {
     // checkEmail(users, inputs);
-  }, [ display, successfulLogin, emailExists]);
+  }, [display, successfulLogin, emailExists]);
 
   const handleInputChange = (event) => {
     const target = event.target;
@@ -31,29 +31,33 @@ function Login(props) {
         setEmailExsist(true);
         if (user.email === inputs.email && user.password === inputs.password) {
           localStorage.setItem("token", user.token);
-          setSuccessfulLogin(true);
+          console.log("true");
+          //setSuccessfulLogin(true);
           props.handleClose();
-          navigate('/categories/assets')
-          setInputs({ email: "", password: "" })
-        }
-      else if (
-        user.email !== inputs.email &&
-        user.password !== inputs.password
-      )  {
-        return (
-          setSuccessfulLogin(false), setEmailExsist(false), setDisplay(true)
-        );
+          navigate("/categories/assets");
+          setInputs({ email: "", password: "" });
+        } else if (
+          user.email !== inputs.email &&
+          user.password !== inputs.password
+        ) {
+          return (
+            setSuccessfulLogin(false), setEmailExsist(false), setDisplay(true)
+          );
         }
       }
-    })}
-  
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    checkEmail()
-    if(!successfulLogin){ setDisplay(true) } else{ setDisplay(false) };
-  }; 
-
+    checkEmail();
+    console.log();
+    if (!successfulLogin) {
+      setDisplay(true);
+    } else {
+      setDisplay(false);
+    }
+  };
 
   return (
     <>
@@ -70,7 +74,9 @@ function Login(props) {
             >
               {emailExists && !successfulLogin
                 ? "Password Incorrect"
-                : (emailExists && successfulLogin)? setDisplay(false) :"Please Enter Valid Email and Password"}
+                : emailExists && successfulLogin
+                ? setDisplay(false)
+                : "Please Enter Valid Email and Password"}
             </div>
             <div className="card-body p-3">
               <div className="form-outline mb-2">
