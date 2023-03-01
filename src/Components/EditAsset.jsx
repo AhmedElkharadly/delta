@@ -17,8 +17,8 @@ function EditAsset(props) {
   const [assetExist, setassetExist] = useState(false);
 
   const assets = useSelector((state) => state.assets?.assets);
-//   const asset = assets.filter((everyasset) => everyasset.id === props.assetid)
-  console.log(props.asset)
+  //   const asset = assets.filter((everyasset) => everyasset.id === props.assetid)
+  console.log(props.asset);
 
   const dispach = useDispatch();
   const navigate = useNavigate();
@@ -32,24 +32,22 @@ function EditAsset(props) {
   };
 
   useEffect(() => {
-
-    console.log(props.assetid)
+    console.log(props.assetid);
   }, [inputs]);
-
 
   const discard = () => {
     setInputs({ ...inputs, name: "" });
     navigate("/categories/assets");
     return;
   };
-//   const handleExistError = () => {
-//     catState?.map((cat) => {
-//       if (inputs.name === cat.name) {
-//         return setassetExist(true), sitDisplay(true);
-//       }
-//       if (inputs.name == "") sitDisplay(true);
-//     });
-//   };
+  //   const handleExistError = () => {
+  //     catState?.map((cat) => {
+  //       if (inputs.name === cat.name) {
+  //         return setassetExist(true), sitDisplay(true);
+  //       }
+  //       if (inputs.name == "") sitDisplay(true);
+  //     });
+  //   };
 
   const handleSubmit = () => {
     // handleExistError();
@@ -72,7 +70,6 @@ function EditAsset(props) {
                 display ? "alert alert-danger displayed" : "notDisplayed"
               }
             >
-
               {/* {assetExist
                 ? "This Category is Already Exist "
                 : "Please Fill the Title of your Category"} */}
@@ -87,13 +84,13 @@ function EditAsset(props) {
                 type="text"
                 className="form-control"
                 id="catname"
-                placeholder={props.asset.name}
+                placeholder={props.asset?.name}
                 value={inputs.title}
                 // onBlur={handleExistError}
                 onChange={handleInputChange}
               />
             </div>
-            
+
             <div className="mb-3">
               <label htmlFor="catname" className="form-label">
                 Quantity
@@ -104,7 +101,7 @@ function EditAsset(props) {
                 type="text"
                 className="form-control"
                 id="catname"
-                placeholder={props.asset.lable}
+                placeholder={props.asset?.lable}
                 value={inputs.lable}
                 // onBlur={handleExistError}
                 onChange={handleInputChange}
@@ -120,7 +117,7 @@ function EditAsset(props) {
                 type="text"
                 className="form-control"
                 id="catname"
-                placeholder={props.asset.catId}
+                placeholder={props.asset?.catId}
                 value={inputs.catId}
                 // onBlur={handleExistError}
                 onChange={handleInputChange}
@@ -136,7 +133,7 @@ function EditAsset(props) {
                 type="text"
                 className="form-control"
                 id="catname"
-                placeholder={props.asset.components}
+                placeholder={props.asset?.components}
                 value={inputs.components}
                 // onBlur={handleExistError}
                 onChange={handleInputChange}

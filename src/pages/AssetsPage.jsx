@@ -15,6 +15,7 @@ function AssetsPage() {
   const [catAssets, setCatAssets] = useState([]);
   const [deletedAsset, setDeletedAsset] = useState([]);
   const [theUser, setTheUser] = useState();
+  const [editAsset, setEditAsset] = useState(null);
 
   const catAssetsState = useSelector((state) => state.assets?.getAssets);
   const catState = useSelector((state) => state.Categories?.categories);
@@ -46,7 +47,10 @@ function AssetsPage() {
     navigate("/categories/assets");
   };
 
-  const handleShow = () => setShow(true);
+  const handleShow = (asset) => {
+    setEditAsset(asset);
+    setShow(true);
+  };
 
   const deleteAssetById = (id) => {
     dispach(deleteAsset(id));
@@ -93,31 +97,30 @@ function AssetsPage() {
                         return cat.id == asset.catId && cat.name;
                       })}
                     </td>
-                    {token !== null &&
-                      myUser[0].type == "Admin" && (
-                        <td className="d-flex justify-content-center">
-                          <Button
-                            cname=""
-                            icon={editIc}
-                            bgColor="  "
-                            w=""
-                            HBC={handleShow}
-                          />
-                          <Button
-                            HBC={() => {
-                              deleteAssetById(asset.id);
-                            }}
-                            icon={deleteIc}
-                            bgColor="tranceparent"
-                          />
-                          <EditAsset
-                            show={show}
-                            handleClose={handleClose}
-                            handleShow={handleShow}
-                            asset={asset}
-                          />
-                        </td>
-                      )}
+                    {token !== null && myUser[0].type == "Admin" && (
+                      <td className="d-flex justify-content-center">
+                        <Button
+                          cname=""
+                          icon={editIc}
+                          bgColor="  "
+                          w=""
+                          HBC={() => handleShow(asset)}
+                        />
+                        <Button
+                          HBC={() => {
+                            deleteAssetById(asset.id);
+                          }}
+                          icon={deleteIc}
+                          bgColor="tranceparent"
+                        />
+                        <EditAsset
+                          show={show}
+                          handleClose={handleClose}
+                          handleShow={handleShow}
+                          asset={editAsset}
+                        />
+                      </td>
+                    )}
                   </tr>
                 );
               })

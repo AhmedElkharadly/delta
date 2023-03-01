@@ -16,6 +16,7 @@ const AddAssetForm = (props) => {
   });
 
   const categories = useSelector((state) => state.Categories?.categories);
+  console.log("categories", categories);
 
   const [display, setDisplay] = useState(false);
   const dispach = useDispatch();
@@ -104,21 +105,27 @@ const AddAssetForm = (props) => {
                 <label htmlFor="assetCategory" className="form-label">
                   Category
                 </label>
-                <input
+                {/* <input
                   name="catId"
                   id="assetCategory"
                   list="datalistOptions"
                   className="form-control"
                   placeholder="Pick a Category..."
                   onChange={handleInputsChange}
-                />
-                <datalist id="datalistOptions">
+                /> */}
+                <select
+                  id="datalistOptions"
+                  name="catId"
+                  onChange={handleInputsChange}
+                >
                   {categories?.map((category) => {
                     return (
-                      <option key={category.name} value={category.catId} />
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
                     );
                   })}
-                </datalist>
+                </select>
               </div>
             </div>
           </Modal.Body>
