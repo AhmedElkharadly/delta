@@ -9,9 +9,13 @@ import { addIc, listic } from "./svg";
 import SearchBar from "./search";
 import "./details.css";
 import UserInfo from "./UserInfo";
+import RegistrationForm from "../pages/Register";
+import Login from "../pages/Login";
 
 const RightPane = (props) => {
-  const [show, setShow] = useState(false);
+  const [showAssetForm, setShowAssetForm] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
   const [assets, setAssets] = useState([]);
   const [localS, setLocalS] = useState(false);
 
@@ -21,24 +25,36 @@ const RightPane = (props) => {
   useEffect(() => {
     setAssets(assetsState);
     localStorage.key("token") !== null ? setLocalS(true) : setLocalS(false);
-    // console.log(localS)
   }, [assets, localStorage.length]);
 
-  const handleClose = () => {
-    setShow(false);
+  const handleCloseAssetForm = () => {
+    setShowAssetForm(false);
     navigate("/categories/assets");
   };
-  const handleShow = () => setShow(true);
+  const handleCloseRegisterForm = () => {
+    setShowRegisterForm(false);
+    // navigate("/categories/assets");
+  };
+  const handleCloseLoginForm = () => {
+    setShowLoginForm(false);
+    // navigate("/categories/assets");
+  };
+
+  const handleShowAssetForm = () => setShowAssetForm(true);
+  const handleShowRegisterForm = () => setShowRegisterForm(true);
+  const handleShowLoginForm = () => setShowLoginForm(true);
 
   const signOut = () => {
     localStorage.removeItem("token");
-    setLocalS(false)
+    setLocalS(false);
   };
-  const goLogin = () => {
-    navigate("/login");
+  const goToLogin = () => {
+    setShowLoginForm(true);
+    setShowRegisterForm(false);
   };
-  const goSignUp = () => {
-    navigate("/signup");
+  const goToSignup = () => {
+    setShowRegisterForm(true);
+    setShowLoginForm(false);
   };
 
   return (
@@ -51,7 +67,7 @@ const RightPane = (props) => {
           </NavLink>
           <Button
             className="d-flex justify-content-center align-items-center fs-6 text-decoration-none m-2"
-            onClick={handleShow}
+            onClick={handleShowAssetForm}
           >
             {addIc}
             New Asset
@@ -90,16 +106,40 @@ const RightPane = (props) => {
         </div>
         <div className="d-flex justify-content-center py-4">
           {localS ? (
-            <Button className="btn btn-danger" onClick={signOut}>Sign Out</Button>
-            ) : (
-              <div><Button className="btn btn-success" onClick={goSignUp}>SignUp</Button> <Button className="btn btn-success" onClick={goLogin}>Login</Button></div> 
+            <Button className="btn btn-danger" onClick={signOut}>
+              Sign Out
+            </Button>
+          ) : (
+            <div>
+              <Button
+                className="btn btn-success"
+                onClick={handleShowRegisterForm}
+              >
+                SignUp
+              </Button>{" "}
+              <Button className="btn btn-success" onClick={handleShowLoginForm}>
+                Login
+              </Button>
+            </div>
           )}
         </div>
       </div>
       <AddAssetForm
-        show={show}
-        handleClose={handleClose}
-        handleShow={handleShow}
+        show={showAssetForm}
+        handleClose={handleCloseAssetForm}
+        handleShow={handleShowAssetForm}
+      />
+      <RegistrationForm
+        goToLogin={goToLogin}
+        show={showRegisterForm}
+        handleClose={handleCloseRegisterForm}
+        handleShow={handleShowRegisterForm}
+      />
+      <Login
+        goToSignup={goToSignup}
+        show={showLoginForm}
+        handleClose={handleCloseLoginForm}
+        handleShow={handleShowLoginForm}
       />
     </div>
   );
