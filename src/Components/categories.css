@@ -1,0 +1,37 @@
+.cardContainer{
+    /* padding: 10px; */
+    border-radius: 16px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background-color: #2c74b33b;
+    font-size: large;
+    font-variant: small-caps;
+    letter-spacing: .8px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: lighter;
+    color: #0A2647;
+}
+
+.cardContainer:hover{
+    cursor: pointer;
+    transition: 1s;
+    scale: 1.01;
+    color: black;
+}
+.pCat:hover{
+    color: black;
+    transition: 0.2s;
+}
+.showMore{
+    color: #1f517c86;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.cardBody{
+    display: flex;
+    justify-content:space-evenly ;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
