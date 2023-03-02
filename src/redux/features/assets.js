@@ -18,7 +18,7 @@ export const Assets = createSlice({
         return asset.id !== action.payload;
       });    },
     editAsset: (state, action) => {
-      state.assets = state.assets.map((asset) => {
+      state.assets = state.assets?.map((asset) => {
         if (action.payload.id === asset.id) {
           return { ...action.payload };
         }

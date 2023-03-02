@@ -16,7 +16,7 @@ const AddAssetForm = (props) => {
   });
 
   const categories = useSelector((state) => state.Categories?.categories);
-  console.log("categories", categories);
+  // console.log("categories", categories);
 
   const [display, setDisplay] = useState(false);
   const dispach = useDispatch();
@@ -28,7 +28,7 @@ const AddAssetForm = (props) => {
     const name = target.name;
 
     setInputs({ ...inputs, [name]: value });
-    console.log(inputs);
+    // console.log(inputs);
   };
 
   const handleAddAssets = () => {
@@ -57,15 +57,14 @@ const AddAssetForm = (props) => {
                   className="form-label"
                   style={{ marginLeft: "0px" }}
                 >
-                  Asset Name
+                  Name
                 </label>
-                <input
+                <input required={true} data-error = "Please accept our policy." 
                   name="name"
                   type="email"
-                  required
                   className="form-control"
                   id="assetName"
-                  placeholder="The Asset Name is..."
+                  placeholder="Asset Name..."
                   onChange={handleInputsChange}
                   aria-autocomplete="false"
                 />
@@ -73,14 +72,14 @@ const AddAssetForm = (props) => {
 
               <div className="mb-3">
                 <label htmlFor="assetQuantity" className="form-label">
-                  Asset Quantity
+                  Quantity
                 </label>
                 <input
                   name="lable"
                   type="email"
                   className="form-control"
                   id="assetQuantity"
-                  placeholder="The Quantity is ..."
+                  placeholder="Quantity ..."
                   onChange={handleInputsChange}
                   aria-autocomplete="false"
                 />
@@ -88,14 +87,14 @@ const AddAssetForm = (props) => {
 
               <div className="mb-3">
                 <label htmlFor="assetComponents" className="form-label">
-                  Asset Components
+                  Components
                 </label>
                 <input
                   name="components"
                   type="text"
                   className="form-control"
                   id="assetComponents"
-                  placeholder="The Comonents are..."
+                  placeholder="Comonents..."
                   onChange={handleInputsChange}
                   aria-autocomplete="false"
                 />
@@ -105,16 +104,15 @@ const AddAssetForm = (props) => {
                 <label htmlFor="assetCategory" className="form-label">
                   Category
                 </label>
-                {/* <input
+                <input
                   name="catId"
                   id="assetCategory"
                   list="datalistOptions"
                   className="form-control"
                   placeholder="Pick a Category..."
                   onChange={handleInputsChange}
-                /> */}
-                <select
-                  id="datalistOptions"
+                />
+                <datalist id="datalistOptions"
                   name="catId"
                   onChange={handleInputsChange}
                 >
@@ -125,7 +123,7 @@ const AddAssetForm = (props) => {
                       </option>
                     );
                   })}
-                </select>
+                </datalist>
               </div>
             </div>
           </Modal.Body>

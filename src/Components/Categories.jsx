@@ -1,4 +1,5 @@
 import "./categories.css";
+import { Modal } from "react-bootstrap";
 import {
   twiticon,
   homeic,
@@ -15,12 +16,19 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAssetaByCatId } from "../redux/features/assets";
 import { NavLink } from "react-router-dom";
+import { deleteCategorie, editCategorie } from "../redux/features/categories";
 
 function Categories(props) {
   const [assetsNum, setAssetsNum] = useState(0)
   const assets = useSelector((state) => state.assets?.assets);
+  const [userExist, setUserExist] = useState(false)
+  const token = localStorage.getItem("token") 
+  
   // console.log(assetsNum)
 
+  const myUser = useSelector((state)=> state.login?.user)
+  console.log(myUser)
+  const dispach = useDispatch()
   const assetsFilter = () => {
     setAssetsNum(
       assets.filter((asset) => {
@@ -31,7 +39,18 @@ function Categories(props) {
   
   useEffect(() => {
     assetsFilter()
-  }, [props.id]);
+    token ? setUserExist(true) : setUserExist(false)
+  }, [localStorage.length, props.id]);  
+
+  const handleDeletCategory = (id) => {
+    dispach(deleteCategorie(id))
+  }
+  
+  const handleEditCategory = (id) => {
+    dispach(editCategorie(id))
+  }
+
+
   return (
     <div
       className="cardContainer px-3 py-3"
@@ -41,6 +60,8 @@ function Categories(props) {
         height: props.h,
       }}
     >
+     { userExist && myUser[0].type == "Admin" && 
+    <Modal.Header className="text-centerd-flex justify-content-end " closeButton onClick={()=>{handleDeletCategory(props.id)}}></Modal.Header>}
       <h3
         className="pCat"
         style={{

@@ -29,11 +29,11 @@ const LeftPane = (props) => {
   return (
     <div className="leftpane">
       <div className="containerx px-3">
-        <header>Dashboard</header>
+        <header className="text-center">DELTA</header>
         <nav>
           <li className="align-items-center d-flex flex-column justify-content-center list-unstyled mb-1">
             <NavLink
-              className="btn d-inline-flex align-items-center rounded "
+              className="btn d-inline-flex align-items-center"
               data-bs-toggle="collapse"
               data-bs-target="#components-collapse"
               aria-expanded="false"
@@ -57,8 +57,8 @@ const LeftPane = (props) => {
                       </li>
                     );
                 })}
-                <NavLink to="/categories" className="showMore small text-white ">
-                  ShowMore...
+                <NavLink to="/categories" className="text-decoration-none border-bottom small text-white ">
+                  Show more..!
                 </NavLink>
               </ul>
             </div>

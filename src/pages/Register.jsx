@@ -174,11 +174,11 @@ function RegistrationForm(props) {
               </button>
             </div>
           </Modal.Footer>
-          <p className="text-center text-muted ">
+          <p className="text-center ">
             Have already an account?{" "}
             <Button
               onClick={props.goToLogin}
-              className="bg-transparent border-0  p-0 fw-bold text-body"
+              className="bg-transparent border-0  p-0 fw-bold"
             >
               <u className="text-decoration-none">Login</u>
             </Button>

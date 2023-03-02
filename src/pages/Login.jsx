@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
+import { addUser } from "../redux/features/user";
 
 function Login(props) {
   const [inputs, setInputs] = useState({
@@ -13,6 +14,7 @@ function Login(props) {
   const [display, setDisplay] = useState(false);
   const users = useSelector((state) => state.register?.users);
   const navigate = useNavigate();
+  const dispach = useDispatch()
 
   useEffect(() => {
     // checkEmail(users, inputs);
@@ -31,6 +33,7 @@ function Login(props) {
         setEmailExsist(true);
         if (user.email === inputs.email && user.password === inputs.password) {
           localStorage.setItem("token", user.token);
+          dispach(addUser(user))
           console.log("true");
           //setSuccessfulLogin(true);
           props.handleClose();

@@ -5,21 +5,20 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCategorie } from "../redux/features/categories";
+import { deleteAsset, editAsset } from "../redux/features/assets";
 
 function EditAsset(props) {
   const [display, sitDisplay] = useState(false);
   const [inputs, setInputs] = useState({
-    name: "",
-    lable: "",
-    catId: "",
-    components: "",
+    name: props.asset?.name,
+    lable: props.asset?.lable,
+    catId: props.asset?.catId,
+    components: props.asset?.components,
+    id: props.asset?.id,
   });
-  const [assetExist, setassetExist] = useState(false);
 
   const assets = useSelector((state) => state.assets?.assets);
-  //   const asset = assets.filter((everyasset) => everyasset.id === props.assetid)
-  console.log(props.asset);
-
+  const catigories = useSelector((state) => state.Categories?.categories);
   const dispach = useDispatch();
   const navigate = useNavigate();
 
@@ -32,29 +31,44 @@ function EditAsset(props) {
   };
 
   useEffect(() => {
-    console.log(props.assetid);
-  }, [inputs]);
+    setInputs({
+      name: props.asset?.name,
+      lable: props.asset?.lable,
+      catId: props.asset?.catId,
+      components: props.asset?.components,
+      id: props.asset?.id,
+    });
+    console.log("render");
+  }, [props]);
 
   const discard = () => {
-    setInputs({ ...inputs, name: "" });
-    navigate("/categories/assets");
+    setInputs({ name: "", lable: "", catId: "", components: "" });
+    // navigate("/categories/assets");
+    props.handleClose()
     return;
   };
-  //   const handleExistError = () => {
-  //     catState?.map((cat) => {
-  //       if (inputs.name === cat.name) {
-  //         return setassetExist(true), sitDisplay(true);
-  //       }
-  //       if (inputs.name == "") sitDisplay(true);
-  //     });
-  //   };
 
   const handleSubmit = () => {
-    // handleExistError();
-    // if (assetExist !== true && display == false && inputs.name != "")
-    //   return (
-    //     dispach(addCategorie(inputs)), props.handleClose(), setInputs.name("")
-    //   );
+    if (
+      inputs.name == "" &&
+      inputs.components == "" &&
+      inputs.lable == "" &&
+      inputs.catId == ""
+    )
+      return props.handleClose();
+    else {
+      dispach(editAsset(inputs));
+      // navigate("/categories/assets");
+      props.handleClose();
+      setInputs({
+        name: "",
+        lable: "",
+        catId: "",
+        components: "",
+        id: "",
+      });
+    }
+    // console.log(assets)
   };
 
   return (
@@ -84,10 +98,10 @@ function EditAsset(props) {
                 type="text"
                 className="form-control"
                 id="catname"
-                placeholder={props.asset?.name}
-                value={inputs.title}
-                // onBlur={handleExistError}
+                value={inputs.name}
                 onChange={handleInputChange}
+                placeholder={props?.asset?.name}
+                // onBlur={handleExistError}
               />
             </div>
 
@@ -101,24 +115,8 @@ function EditAsset(props) {
                 type="text"
                 className="form-control"
                 id="catname"
-                placeholder={props.asset?.lable}
+                placeholder={props?.asset?.lable}
                 value={inputs.lable}
-                // onBlur={handleExistError}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="catname" className="form-label">
-                Category
-              </label>
-              <input
-                name="catId"
-                required
-                type="text"
-                className="form-control"
-                id="catname"
-                placeholder={props.asset?.catId}
-                value={inputs.catId}
                 // onBlur={handleExistError}
                 onChange={handleInputChange}
               />
@@ -138,6 +136,35 @@ function EditAsset(props) {
                 // onBlur={handleExistError}
                 onChange={handleInputChange}
               />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="assetCategory" className="form-label">
+                Category
+              </label>
+              <input
+                name="catId"
+                required
+                type="text"
+                list="datalistOptions"
+                className="form-control"
+                id="assetCategory"
+                placeholder={props?.asset?.catId}
+                // onBlur={handleExistError}
+                onChange={handleInputChange}
+              />
+              <datalist
+                id="datalistOptions"
+                name="catId"
+                onChange={handleInputChange}
+              >
+                {catigories?.map((category) => {
+                  return (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  );
+                })}
+              </datalist>
             </div>
           </Modal.Body>
           <Modal.Footer>

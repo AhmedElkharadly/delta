@@ -6,9 +6,8 @@ import { notificationic } from "./svg";
 
 function UserInfo() {
   const [theUser, setTheUser] = useState();
-  const users = useSelector((state) => state.register.users);
+  const myUser = useSelector((state)=> state.login?.user)
   const getUser = localStorage?.getItem("token");
-  const myUser = users?.filter((user) => user.token === getUser);
   useEffect(() => {
     setTheUser(myUser[0]);
   }, [localStorage.length]);
@@ -16,7 +15,7 @@ function UserInfo() {
   // console.log(myUser);
 
   return (
-    <div className="p-3 text-center">
+    <div className="p-3 text-center border-bottom">
       <h6>
         {notificationic}
         {localStorage.key('token') == null ? "Delta Dashboard" : "Hello, " + myUser[0].fullName +".." } 

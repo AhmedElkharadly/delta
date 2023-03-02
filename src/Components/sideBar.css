@@ -1,78 +1,85 @@
-.leftpane{
-    padding-left: 30px;
-    padding-right: 11rem;
-    
-    
+.leftpane {
+  padding-left: 30px;
+  padding-right: 11rem;
 }
 
 .containerx {
-    /* width: 100%; */
-    /* padding-left: 20px; */
-    background-color: #0A2647;
-    left: 0;
-    /* padding: 20px; */
-    position: fixed;
-    display: flex;
-    align-content: center;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: center;
-    border-right: 1px solid #2322223f;
-    /* border-left: 1px solid #2322223f; */
+  /* width: 100%; */
+  /* padding-left: 20px; */
+  background-color: #0a2647;
+  left: 0;
+  /* padding: 20px; */
+  position: fixed;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  border-right: 1px solid #2322223f;
+  /* border-left: 1px solid #2322223f; */
 }
 
-.logoSmall{
-    width: 25px;
+.logoSmall {
+  width: 25px;
 }
 
 header {
-    color: white ;
-    font-weight: 900;
-    font-family:cursive;
-    font-size: 25px;
-    /* background-color: #1da1f2; */
-    width: 150px;
-    height:38px;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    border-radius: 8px;
+  color: white;
+  font-weight: 900;
+  font-family: cursive;
+  font-size: 25px;
+  /* background-color: #1da1f2; */
+  width: 150px;
+  height: 38px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 8px;
 }
-
 
 .logo5 {
-    height: 1.3em;
-    margin-right: 0.3em;
+  height: 1.3em;
+  margin-right: 0.3em;
 }
 
-.logo6{
-    padding-right: .2em;
-    height: 1.5rem;
-    margin: 0;
+.logo6 {
+  padding-right: 0.2em;
+  height: 1.5rem;
+  margin: 0;
 }
 
 nav {
-    height: 50vh;
-    padding-right: 1em;
-    letter-spacing: .5px;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content: center;
+  height: 50vh;
+  padding-right: 1em;
+  letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-nav > *{
-    text-decoration: none;
-    color: white;
-    font-size: 1.3em;
-    width: 100%;
-    cursor: pointer;
+nav > * {
+  text-decoration: none;
+  color: white;
+  font-size: 1.3em;
+  width: 100%;
+  cursor: pointer;
 }
 
- 
-nav > *:hover, .span:hover{
-    color: #1da1f2;
-    border-radius: 1.5em;
-    background: #99979715;
-    transition:.3s ease-out;
-    /* color: white ; */
+nav > *:hover,
+.span:hover {
+  color: #1da1f2;
+  border-radius: 1.5em;
+  background: #99979715;
+  transition: 0.3s ease-out;
+  /* color: white ; */
+}
+@media only screen and (max-width: 600px) {
+
+  .leftpane {
+    display: none;
+  }
+}
+@media only screen and (max-width: 480px) {
+}
+@media only screen and (max-width: 480px) {
 }

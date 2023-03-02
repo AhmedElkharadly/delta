@@ -43,8 +43,8 @@ function AddCat(props) {
 
   const handleSubmit = () => {
     handleExistError();
-    if (catExist !== true && display == false && inputs.name != "")
-      return dispach(addCategorie(inputs)),  props.handleClose(),setInputs.name("");
+    if (catExist !== true && display !== true && inputs.name !== "")
+      return dispach(addCategorie(inputs)),  props.handleClose(), setInputs({name:""});
   };
 
   return (

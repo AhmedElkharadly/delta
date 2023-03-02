@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import AddAssetForm from "./AddAssetForm";
@@ -11,6 +11,7 @@ import "./details.css";
 import UserInfo from "./UserInfo";
 import RegistrationForm from "../pages/Register";
 import Login from "../pages/Login";
+import { deleteUser } from "../redux/features/user";
 
 const RightPane = (props) => {
   const [showAssetForm, setShowAssetForm] = useState(false);
@@ -20,8 +21,9 @@ const RightPane = (props) => {
   const [localS, setLocalS] = useState(false);
 
   const assetsState = useSelector((state) => state.assets?.assets);
+  
   const navigate = useNavigate();
-
+  const dispach = useDispatch()
   useEffect(() => {
     setAssets(assetsState);
     localStorage.key("token") !== null ? setLocalS(true) : setLocalS(false);
@@ -45,6 +47,7 @@ const RightPane = (props) => {
   const handleShowLoginForm = () => setShowLoginForm(true);
 
   const signOut = () => {
+    dispach(deleteUser())
     localStorage.removeItem("token");
     setLocalS(false);
   };
@@ -56,35 +59,27 @@ const RightPane = (props) => {
     setShowRegisterForm(true);
     setShowLoginForm(false);
   };
+  const goToAllAssets = () => {
+    navigate("/categories/assets");
+  };
 
   return (
-    <div className="rp_header w-25">
-      <div className="rp_content">
+    <div className="rightpane rp_header w-25 p-0 ml-3">
+      <div className="rp_content border-bottom ">
         <UserInfo />
-        <div className="showMore">
-          <NavLink to="/categories/assets" className="fs-6 listic">
-            {listic}
-          </NavLink>
-          <Button
-            className="d-flex justify-content-center align-items-center fs-6 text-decoration-none m-2"
-            onClick={handleShowAssetForm}
-          >
-            {addIc}
-            New Asset
-          </Button>
-        </div>
+        <div className="showMore"></div>
         <div className="catContainer">
-          <li className="align-items-center d-flex flex-column justify-content-center list-unstyled mb-1">
-            <NavLink
+          <li className="align-items-center d-flex flex-column justify-content-center  list-unstyled mb-1">
+            <div
               to="/categories/assets"
-              className="  d-inline-flex text-decoration-none align-items-center rounded "
+              className="  d-inline-flex text-decoration-none align-items-center rounded fs-6 listic"
               data-bs-toggle="collapse"
               data-bs-target="#Assets-collapse"
               aria-expanded="false"
               aria-current="false"
             >
-              <span className="fs-5  ">Show Our Assets</span>
-            </NavLink>
+              {listic}
+            </div>
             <div
               className="collapse d-flex-col align-items-center "
               id="Assets-collapse"
@@ -101,28 +96,44 @@ const RightPane = (props) => {
                   );
                 })}
               </ul>
+              <div className="d-flex justify-content-center align-items-center flex-column">
+              
+              <Button
+                className="d-flex justify-content-center align-items-center border-0 fs-6 text-decoration-none m-2 gradient-custom-4"
+                onClick={goToAllAssets}
+                >
+                Assets Detailed
+              </Button>
+              <Button
+                className="d-flex justify-content-center align-items-center fs-6 border-0 text-decoration-none m-2 gradient-custom-4"
+                onClick={handleShowAssetForm}
+                >
+                {addIc}
+                Asset
+              </Button>
+                </div>
             </div>
           </li>
         </div>
-        <div className="d-flex justify-content-center py-4">
+        <div className="d-flex justify-content-center py-4 allign-items-center bottom-0">
           {localS ? (
-            <Button className="btn btn-danger" onClick={signOut}>
+            <Button className="btn gradient-custom-4 border-0" onClick={signOut}>
               Sign Out
             </Button>
           ) : (
             <div>
               <Button
-                className="btn btn-success"
+                className="btn gradient-custom-4 border-0"
                 onClick={handleShowRegisterForm}
               >
                 SignUp
               </Button>{" "}
-              <Button className="btn btn-success" onClick={handleShowLoginForm}>
+              <Button className="btn gradient-custom-4 border-0" onClick={handleShowLoginForm}>
                 Login
               </Button>
             </div>
           )}
-        </div>
+        </div>  
       </div>
       <AddAssetForm
         show={showAssetForm}
@@ -141,6 +152,7 @@ const RightPane = (props) => {
         handleClose={handleCloseLoginForm}
         handleShow={handleShowLoginForm}
       />
+      
     </div>
   );
 };
