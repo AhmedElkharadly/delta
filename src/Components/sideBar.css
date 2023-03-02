@@ -1,4 +1,5 @@
 .leftpane {
+
   padding-left: 30px;
   padding-right: 11rem;
 }
@@ -73,13 +74,16 @@ nav > *:hover,
   transition: 0.3s ease-out;
   /* color: white ; */
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 780px) {
 
   .leftpane {
     display: none;
   }
 }
 @media only screen and (max-width: 480px) {
+    .leftpane {
+      display: none;
+    }
 }
 @media only screen and (max-width: 480px) {
 }

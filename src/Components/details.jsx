@@ -64,7 +64,7 @@ const RightPane = (props) => {
   };
 
   return (
-    <div className="rightpane rp_header w-25 p-0 ml-3">
+    <div className="rightpane rp_header w-25 p-0 pt-3 ml-3">
       <div className="rp_content border-bottom ">
         <UserInfo />
         <div className="showMore"></div>
@@ -104,13 +104,7 @@ const RightPane = (props) => {
                 >
                 Assets Detailed
               </Button>
-              <Button
-                className="d-flex justify-content-center align-items-center fs-6 border-0 text-decoration-none m-2 gradient-custom-4"
-                onClick={handleShowAssetForm}
-                >
-                {addIc}
-                Asset
-              </Button>
+              
                 </div>
             </div>
           </li>

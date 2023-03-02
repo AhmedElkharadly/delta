@@ -1,4 +1,4 @@
-body{
+body {
   /* background-color:  231, 169, 169); */
 }
 .App {
@@ -42,4 +42,10 @@ body{
   to {
     transform: rotate(360deg);
   }
+}
+@media only screen and (max-width: 600px) {
+}
+@media only screen and (max-width: 480px) {
+}
+@media only screen and (max-width: 480px) {
 }

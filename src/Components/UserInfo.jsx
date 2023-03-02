@@ -15,7 +15,7 @@ function UserInfo() {
   // console.log(myUser);
 
   return (
-    <div className="p-3 text-center border-bottom">
+    <div className="pt-2 text-center ">
       <h6>
         {notificationic}
         {localStorage.key('token') == null ? "Delta Dashboard" : "Hello, " + myUser[0].fullName +".." } 

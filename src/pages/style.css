@@ -49,3 +49,19 @@
     background: linear-gradient(to right, rgb(134, 132, 250), rgba(143, 211, 244, 1))
     }
     
+    .navBar{
+        background-color: 0A2647;
+    }
+
+    @media only screen and (max-width: 780PX) {
+        .customRes{
+            padding-top: 70px !important;
+        }
+    }
+    @media only screen and (max-width: 480px) {
+          .customRes{
+              padding-top: 70px !important;
+          }
+      }
+      @media only screen and (max-width: 480px) {
+      }

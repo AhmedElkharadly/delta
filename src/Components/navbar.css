@@ -1,0 +1,16 @@
+.customnav{
+    background: #0A2647 ;
+}
+.responsiveNavBar{
+    display: none;
+}
+
+@media only screen and (max-width: 780PX) {
+    .responsiveNavBar{
+        display: block;
+    }
+}
+@media only screen and (max-width: 480px) {
+}
+@media only screen and (max-width: 480px) {
+}

@@ -2,10 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { editIc, deleteIc, smallAddIc } from "../Components/svg";
+import { editIc, deleteIc, smallAddIc, addIc } from "../Components/svg";
 import { deleteAsset, getAssetaByCatId } from "../redux/features/assets";
 import EditAsset from "../Components/EditAsset";
+// import { Button } from "react-bootstrap";
 import Button from "../Components/button";
+import AddAssetForm from "../Components/AddAssetForm";
+import './style.css'
 
 function AssetsPage() {
   const [cats, setCats] = useState([]);
@@ -16,6 +19,7 @@ function AssetsPage() {
   const [catAssets, setCatAssets] = useState([]);
   const [deletedAsset, setDeletedAsset] = useState([]);
   const [editAsset, setEditAsset] = useState(null);
+  const [showAssetForm, setShowAssetForm] = useState(false);
 
   const catAssetsState = useSelector((state) => state.assets?.getAssets);
   const catState = useSelector((state) => state.Categories?.categories);
@@ -52,9 +56,24 @@ function AssetsPage() {
     setDeletedAsset(deleteAsset(id));
   };
 
+  const handleCloseAssetForm = () => {
+    setShowAssetForm(false);
+    // navigate("/categories/assets");
+  };
+  const handleShowAssetForm = () => setShowAssetForm(true);
+
   return (
-    <div className="-sm p-4">
-      <h1>{title}</h1>
+    <div className="-sm p-4 customRes">
+      <div className="d-flex justify-content-between">
+        <h1>{title}</h1>
+        <Button
+          className="d-flex justify-content-center align-items-center fs-6 border-0 text-decoration-none m-2 gradient-custom-4 "
+          HBC={handleShowAssetForm}
+          icon={addIc}
+        >
+          
+        </Button>
+      </div>
       <table className="align-baseline table table-hover table-responsive table-striped text-center w-100">
         <thead>
           <tr>
@@ -78,7 +97,9 @@ function AssetsPage() {
                     <td>
                       {parseInt(asset.lable) < 1 || asset.lable === " " ? (
                         <Button
-                          HBC={()=>{handleShow(asset)}}
+                          HBC={() => {
+                            handleShow(asset);
+                          }}
                           name=""
                           icon={smallAddIc}
                         />
@@ -93,7 +114,7 @@ function AssetsPage() {
                       })}
                     </td>
                     {token !== null && myUser[0].type == "Admin" && (
-                      <td className="d-flex justify-content-center">
+                      <td className="">
                         <Button
                           cname=""
                           icon={editIc}
@@ -136,8 +157,11 @@ function AssetsPage() {
                       })}
                     </td>
                     {token !== null && myUser[0].type == "Admin" && (
-                      <td className="d-flex justify-content-center">
-                        <Button HBC={()=>handleShow(catasset)} icon={editIc} />
+                      <td className="">
+                        <Button
+                          HBC={() => handleShow(catasset)}
+                          icon={editIc}
+                        />
                         <Button
                           HBC={() => {
                             deleteAssetById(catasset.id);
@@ -156,6 +180,11 @@ function AssetsPage() {
         handleClose={handleClose}
         handleShow={handleShow}
         asset={editAsset}
+      />
+      <AddAssetForm
+        show={showAssetForm}
+        handleClose={handleCloseAssetForm}
+        handleShow={handleShowAssetForm}
       />
     </div>
   );
