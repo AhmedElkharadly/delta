@@ -10,13 +10,14 @@ import AddCat from "../Components/AddCat";
 const CategoriesPage = () => {
   const [show, setShow] = useState(false);
   const [cats, setCats] = useState([]);
+  
   const [userExist, setUserExist] = useState(false)
   const token = localStorage.getItem("token") 
   const users = useSelector((state) => state.register?.users);
   const myUser = users?.filter(
     (user) => user.token == token
   );
-  console.log(myUser);
+  // console.log(myUser);
   const catState = useSelector((state) => state.Categories?.categories);
   const dispach = useDispatch();
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const CategoriesPage = () => {
         {cats.map((cat) => {
           return (
             <div key={cat.id}>
-              <Categories name={cat.name} id={cat.id} />
+              <Categories cat={cat} name={cat.name} id={cat.id} />
             </div>
           );
         })}

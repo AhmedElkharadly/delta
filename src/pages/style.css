@@ -7,6 +7,13 @@
   /* height: 600px; */
 }
 
+  tr {
+border: none !important;
+}
+
+.responsiveTable{
+  /* border: 1px solid black; */
+}
 .form-body {
   text-align: left;
   padding: 20px 10px;
@@ -65,7 +72,7 @@
   );
 }
 .needed::before {
-    content: "Needed";
+  content: "Needed";
   position: absolute;
   background-color: red !important;
   color: white !important;
@@ -78,7 +85,7 @@
   background-color: 0A2647;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   .customRes {
     padding-top: 70px !important;
   }

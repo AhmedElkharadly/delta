@@ -66,7 +66,6 @@ const RightPane = (props) => {
   return (
     <div className="rightpane rp_header w-25 p-0  ml-3">
       <div className="rp_content border-bottom ">
-        <UserInfo />
         <div className="showMore"></div>
         <div className="catContainer">
           <li className="align-items-center d-flex flex-column justify-content-center  list-unstyled mb-1">

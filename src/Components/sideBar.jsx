@@ -15,10 +15,12 @@ import {
 import "./sideBar.css";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import UserInfo from "./UserInfo";
 
 const LeftPane = (props) => {
   const [cats, setCats] = useState([]);
   const [builds, setBuilds] = useState([]);
+  const assets = useSelector((state) => state.assets?.assets);
 
   const catState = useSelector((state) => state.Categories?.categories);
   const buildState = useSelector((state) => state.Categories?.categories);
@@ -30,7 +32,40 @@ const LeftPane = (props) => {
     <div className="leftpane">
       <div className="containerx px-3">
         <header className="text-center">DELTA</header>
-        <nav>
+        <nav className="d-flex flex-column justify-content-between align-items-center hieght-vh" >
+          <div>
+          <li className="align-items-center d-flex flex-column justify-content-center list-unstyled mb-1">
+            <NavLink
+              className="btn d-inline-flex align-items-center"
+              data-bs-toggle="collapse"
+              data-bs-target="#components-collapses"
+              aria-expanded="false"
+              aria-current="false"
+            >
+              {listic}
+              <span className="fs-5 text-white">Assets</span>{" "}
+            </NavLink>
+            <div className="collapse" id="components-collapses">
+              <ul className="list-unstyled small">
+                {assets.map((asset, index) => {
+                  if (index <= 3)
+                    return (
+                      <li key={asset.id}>
+                        <Link
+                          to={"/categories/assets/" + asset.id}
+                          className="text-decoration-none text-white d-inline-flex align-items-center rounded"
+                        >
+                          {asset.name}
+                        </Link>
+                      </li>
+                    );
+                })}
+                <NavLink to="/categories/assets" className="text-decoration-none border-bottom small text-white ">
+                  Show more..!
+                </NavLink>
+              </ul>
+            </div>
+          </li>
           <li className="align-items-center d-flex flex-column justify-content-center list-unstyled mb-1">
             <NavLink
               className="btn d-inline-flex align-items-center"
@@ -95,8 +130,11 @@ const LeftPane = (props) => {
               </ul>
             </div>
           </li>
+          </div>
+      <UserInfo />
         </nav>
       </div>
+
     </div>
   );
 };

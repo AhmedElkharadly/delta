@@ -12,10 +12,12 @@ import NavBar from "./Components/NavBar";
 import { useEffect, useState } from "react";
 
 function App() {
+
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(true);
   const user = useSelector((state) => state?.login.user);
   const authrized = user[0] !== undefined;
-  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  
   const goToLogin = () => {
     setShowLoginForm(true);
     setShowRegisterForm(false);
@@ -24,22 +26,16 @@ function App() {
     setShowRegisterForm(true);
     setShowLoginForm(false);
   };
-  const handleCloseRegisterForm = () => {
-    setShowRegisterForm(false);
-  };
-  const handleCloseLoginForm = () => {
-    setShowLoginForm(false);
-  };
-  const handleShowRegisterForm = () => {
-    setShowRegisterForm(true);
-  };
+  
+  const handleCloseRegisterForm = () => setShowRegisterForm(false);
+  const handleCloseLoginForm = () => setShowLoginForm(false);
+  const handleShowRegisterForm = () => setShowRegisterForm(true);
   const handleShowLoginForm = () => setShowLoginForm(true);
 
-  useEffect(() => {}, [showLoginForm]);
 
   return (
-    <div>
-      <NavBar className="" />
+    <div className="">
+      <NavBar />
       <div className="App">
         <LeftPane />
         <div className="feed w-100">

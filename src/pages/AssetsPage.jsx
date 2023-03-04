@@ -5,15 +5,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import { editIc, deleteIc, smallAddIc, addIc } from "../Components/svg";
 import { deleteAsset, getAssetaByCatId } from "../redux/features/assets";
 import EditAsset from "../Components/EditAsset";
+import DeleteAlert from "../Components/deleteConfirmation";
 // import { Button } from "react-bootstrap";
 import Button from "../Components/button";
 import AddAssetForm from "../Components/AddAssetForm";
 import "./style.css";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 
 function AssetsPage() {
   const [cats, setCats] = useState([]);
   const [title, setTitle] = useState("");
   const [show, setShow] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [theUser, setTheUser] = useState();
   const [assets, setAssets] = useState([]);
   const [catAssets, setCatAssets] = useState([]);
@@ -51,14 +54,21 @@ function AssetsPage() {
     setShow(true);
   };
 
-  const deleteAssetById = (id) => {
-    dispach(deleteAsset(id));
-    setDeletedAsset(deleteAsset(id));
+  const handleShowDeleteConfrmation = (asset) => {
+    setEditAsset(asset);
+    setShowDelete(true);
+  };
+  const handleCloseDeleteConfirmation = () => {
+    setShowDelete(false);
+  };
+
+  const handleDelete = () => {
+    dispach(deleteAsset(editAsset.id));
+    handleCloseDeleteConfirmation();
   };
 
   const handleCloseAssetForm = () => {
     setShowAssetForm(false);
-    // navigate("/categories/assets");
   };
   const handleShowAssetForm = () => setShowAssetForm(true);
 
@@ -74,54 +84,55 @@ function AssetsPage() {
           />
         )}
       </div>
-      <table className="align-baseline table table-hover table-responsive table-striped text-center w-100">
-        <thead>
-          <tr>
+      <Table className="align-baseline table table-hover table-responsive table-striped text-center w-100">
+        <Thead>
+          <Tr>
             {/* <th scope="col">ID</th> */}
-            <th scope="col">Name</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Compnents</th>
-            <th scope="col">Category</th>
-            <th scope="col">Location</th>
+            <Th scope="col">Name</Th>
+            <Th scope="col">Quantity</Th>
+            <Th scope="col">Compnents</Th>
+            <Th scope="col">Category</Th>
+            <Th scope="col">Location</Th>
             {token !== null && myUser[0].type == "Admin" && (
-              <th scope="col">Oprations</th>
+              <Th scope="col">Oprations</Th>
             )}
-          </tr>
-        </thead>
-        <tbody>
+          </Tr>
+        </Thead>
+        <Tbody>
           {title == "All Assets"
             ? assets?.map((asset) => {
                 return (
-                  <tr key={asset.id}>
+                  <Tr key={asset.id}>
                     {/* <td>{asset.id}</td> */}
-                    <td scope="row">{asset.name}</td>
-                    <td>
-                      {(parseInt(asset.lable) <= 1 || asset.lable === " ") && (token !== null && myUser[0].type == "Admin") ? (
+                    <Td scope="row">{asset.name}</Td>
+                    <Td>
+                      {(parseInt(asset.lable) <= 1 || asset.lable === " ") &&
+                      token !== null &&
+                      myUser[0].type == "Admin" ? (
                         <div className="d-flex justify-content-end align-items-center">
                           {asset.lable}
-                        <Button
-                          HBC={() => {
-                            handleShow(asset);
-                          }}
-                          name=""
-                          bgColor="red"
-                          ml="4px"
-                          icon={smallAddIc}
+                          <Button
+                            HBC={() => {
+                              handleShow(asset);
+                            }}
+                            bgColor=""
+                            ml="4px"
+                            icon={smallAddIc}
                           />
-                          </div>
+                        </div>
                       ) : (
                         asset.lable
                       )}
-                    </td>
-                    <td>{asset?.components?.toString()}</td>
-                    <td>
+                    </Td>
+                    <Td>{asset?.components?.toString()}</Td>
+                    <Td>
                       {cats.map((cat) => {
                         return cat.id == asset.catId && cat.name;
                       })}
-                    </td>
-                    <td>{asset?.location?.toString()}</td>
+                    </Td>
+                    <Td>{asset?.location?.toString()}</Td>
                     {token !== null && myUser[0].type == "Admin" && (
-                      <td className="">
+                      <Td className="">
                         <Button
                           cname=""
                           icon={editIc}
@@ -131,21 +142,21 @@ function AssetsPage() {
                         />
                         <Button
                           HBC={() => {
-                            deleteAssetById(asset.id);
+                            handleShowDeleteConfrmation(asset);
                           }}
                           icon={deleteIc}
                           bgColor="tranceparent"
                         />
-                      </td>
+                      </Td>
                     )}
-                  </tr>
+                  </Tr>
                 );
               })
             : catAssets?.map((catasset) => {
                 return (
-                  <tr key={catasset.id}>
-                    <td scope="row">{catasset.name}</td>
-                    <td>
+                  <Tr key={catasset.id}>
+                    <Td scope="row">{catasset.name}</Td>
+                    <Td>
                       {parseInt(catasset.lable) < 1 ||
                       catasset.lable === " " ? (
                         <Button
@@ -156,33 +167,33 @@ function AssetsPage() {
                       ) : (
                         catasset.lable
                       )}
-                    </td>
-                    <td>{catasset.components.toString()}</td>
-                    <td>
+                    </Td>
+                    <Td>{catasset.components.toString()}</Td>
+                    <Td>
                       {cats.map((cat) => {
                         return cat.id == catasset.catId && cat.name;
                       })}
-                    </td>
-                    <td>{catasset?.location?.toString()}</td>
+                    </Td>
+                    <Td>{catasset?.location?.toString()}</Td>
                     {token !== null && myUser[0].type == "Admin" && (
-                      <td className="">
+                      <Td className="">
                         <Button
                           HBC={() => handleShow(catasset)}
                           icon={editIc}
                         />
                         <Button
                           HBC={() => {
-                            deleteAssetById(catasset.id);
+                            handleShowDeleteConfrmation(catasset);
                           }}
                           icon={deleteIc}
                         ></Button>
-                      </td>
+                      </Td>
                     )}
-                  </tr>
+                  </Tr>
                 );
               })}
-        </tbody>
-      </table>
+        </Tbody>
+      </Table>
       <EditAsset
         show={show}
         handleClose={handleClose}
@@ -193,6 +204,13 @@ function AssetsPage() {
         show={showAssetForm}
         handleClose={handleCloseAssetForm}
         handleShow={handleShowAssetForm}
+      />
+      <DeleteAlert
+        show={showDelete}
+        handleClose={handleCloseDeleteConfirmation}
+        handleShow={handleShowDeleteConfrmation}
+        element={editAsset}
+        delete={handleDelete}
       />
     </div>
   );

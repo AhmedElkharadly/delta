@@ -39,13 +39,11 @@ function EditAsset(props) {
       id: props.asset?.id,
       location: props.asset?.location,
     });
-    console.log("render");
   }, [props]);
 
   const discard = () => {
     setInputs({ name: "", lable: "", catId: "", components: "", location: "" });
-    // navigate("/categories/assets");
-    props.handleClose()
+    props.handleClose();
     return;
   };
 
@@ -151,6 +149,7 @@ function EditAsset(props) {
                 className="form-control"
                 id="assetCategory"
                 placeholder={props?.asset?.catId}
+                // value={inputs.catId}
                 // onBlur={handleExistError}
                 onChange={handleInputChange}
               />
@@ -167,22 +166,22 @@ function EditAsset(props) {
                   );
                 })}
               </datalist>
-            <div className="mb-3">
-              <label htmlFor="assetLocation" className="form-label">
-                Location
-              </label>
-              <input
-                required
-                name="location"
-                type="text"
-                className="form-control"
-                id="assetLocation"
-                placeholder={props.asset?.location}
-                value={inputs.location}
-                // onBlur={handleExistError}
-                onChange={handleInputChange}
-              />
-            </div>
+              <div className="mb-3">
+                <label htmlFor="assetLocation" className="form-label">
+                  Location
+                </label>
+                <input
+                  required
+                  name="location"
+                  type="text"
+                  className="form-control"
+                  id="assetLocation"
+                  placeholder={props.asset?.location}
+                  value={inputs.location}
+                  // onBlur={handleExistError}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
           </Modal.Body>
           <Modal.Footer>

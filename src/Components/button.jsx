@@ -3,7 +3,7 @@ import "./button.css";
 function Button(props) {
   return (
     <button
-      className="rcButton shadow-sm "
+      className="rcButton shadow "
       style={{
         backgroundColor: props.bgColor,
         color: props.color,
