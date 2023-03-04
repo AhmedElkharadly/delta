@@ -17,7 +17,7 @@ function Login(props) {
   const dispach = useDispatch()
 
   useEffect(() => {
-    // checkEmail(users, inputs);
+    
   }, [display, successfulLogin, emailExists]);
 
   const handleInputChange = (event) => {

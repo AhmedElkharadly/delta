@@ -9,7 +9,7 @@ import AddAssetForm from "./Components/AddAssetForm";
 import RegistrationForm from "./pages/Register";
 import Login from "./pages/Login";
 import NavBar from "./Components/NavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [showLoginForm, setShowLoginForm] = useState(true);
@@ -30,8 +30,12 @@ function App() {
   const handleCloseLoginForm = () => {
     setShowLoginForm(false);
   };
-  const handleShowRegisterForm = () => setShowRegisterForm(true);
+  const handleShowRegisterForm = () => {
+    setShowRegisterForm(true);
+  };
   const handleShowLoginForm = () => setShowLoginForm(true);
+
+  useEffect(() => {}, [showLoginForm]);
 
   return (
     <div>
@@ -42,23 +46,78 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={authrized ? <div>Hello</div> : <Login />}
+              element={
+                authrized ? (
+                  <div>Hello</div>
+                ) : (
+                  <Login
+                    goToSignup={goToSignup}
+                    show={true}
+                    handleClose={handleCloseLoginForm}
+                    handleShow={handleShowLoginForm}
+                  />
+                )
+              }
             />
             <Route
               path="/categories"
-              element={authrized ? <CategoriesPage /> : <Login />}
+              element={
+                authrized ? (
+                  <CategoriesPage />
+                ) : (
+                  <Login
+                    goToSignup={goToSignup}
+                    show={true}
+                    handleClose={handleCloseLoginForm}
+                    handleShow={handleShowLoginForm}
+                  />
+                )
+              }
             />
             <Route
               path="/categories/assets"
-              element={authrized ? <AssetsPage /> : <Login />}
+              element={
+                authrized ? (
+                  <AssetsPage />
+                ) : (
+                  <Login
+                    goToSignup={goToSignup}
+                    show={true}
+                    handleClose={handleCloseLoginForm}
+                    handleShow={handleShowLoginForm}
+                  />
+                )
+              }
             />
             <Route
               path="/categories/assets/:id"
-              element={authrized ? <AssetsPage /> : <Login />}
+              element={
+                authrized ? (
+                  <AssetsPage />
+                ) : (
+                  <Login
+                    goToSignup={goToSignup}
+                    show={true}
+                    handleClose={handleCloseLoginForm}
+                    handleShow={handleShowLoginForm}
+                  />
+                )
+              }
             />
             <Route
               path="/addasset"
-              element={authrized ? <AddAssetForm /> : <Login />}
+              element={
+                authrized ? (
+                  <AddAssetForm />
+                ) : (
+                  <Login
+                    goToSignup={goToSignup}
+                    show={true}
+                    handleClose={handleCloseLoginForm}
+                    handleShow={handleShowLoginForm}
+                  />
+                )
+              }
             />
           </Routes>
         </div>
@@ -69,12 +128,6 @@ function App() {
         show={showRegisterForm}
         handleClose={handleCloseRegisterForm}
         handleShow={handleShowRegisterForm}
-      />
-      <Login
-        goToSignup={goToSignup}
-        show={showLoginForm}
-        handleClose={handleCloseLoginForm}
-        handleShow={handleShowLoginForm}
       />
     </div>
   );
