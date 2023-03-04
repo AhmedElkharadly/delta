@@ -34,7 +34,7 @@ const CategoriesPage = () => {
   const handleShow = () => setShow(true);
 
   return (
-    <div className="container mt-5 pb-5">
+    <div className="container mt-3 pb-5 customRes">
       <div className="row row-cols-md-3 g-2">
         {cats.map((cat) => {
           return (

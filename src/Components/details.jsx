@@ -64,7 +64,7 @@ const RightPane = (props) => {
   };
 
   return (
-    <div className="rightpane rp_header w-25 p-0 pt-3 ml-3">
+    <div className="rightpane rp_header w-25 p-0  ml-3">
       <div className="rp_content border-bottom ">
         <UserInfo />
         <div className="showMore"></div>
