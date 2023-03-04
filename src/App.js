@@ -9,11 +9,29 @@ import AddAssetForm from "./Components/AddAssetForm";
 import RegistrationForm from "./pages/Register";
 import Login from "./pages/Login";
 import NavBar from "./Components/NavBar";
+import { useState } from "react";
 
 function App() {
-  const assets = useSelector((state) => state.assets);
-  const assetsCCat = useSelector((state) => state.assets.getAssets);
-  const dispatch = useDispatch();
+  const [showLoginForm, setShowLoginForm] = useState(true);
+  const user = useSelector((state) => state?.login.user);
+  const authrized = user[0] !== undefined;
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const goToLogin = () => {
+    setShowLoginForm(true);
+    setShowRegisterForm(false);
+  };
+  const goToSignup = () => {
+    setShowRegisterForm(true);
+    setShowLoginForm(false);
+  };
+  const handleCloseRegisterForm = () => {
+    setShowRegisterForm(false);
+  };
+  const handleCloseLoginForm = () => {
+    setShowLoginForm(false);
+  };
+  const handleShowRegisterForm = () => setShowRegisterForm(true);
+  const handleShowLoginForm = () => setShowLoginForm(true);
 
   return (
     <div>
@@ -22,16 +40,42 @@ function App() {
         <LeftPane />
         <div className="feed w-100">
           <Routes>
-            <Route path="/signup" element={<RegistrationForm />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/categories" element={<CategoriesPage />} />
-            <Route path="/categories/assets" element={<AssetsPage />} />
-            <Route path="/categories/assets/:id" element={<AssetsPage />} />
-            <Route path="/addasset" element={<AddAssetForm />} />
+            <Route
+              path="/"
+              element={authrized ? <div>Hello</div> : <Login />}
+            />
+            <Route
+              path="/categories"
+              element={authrized ? <CategoriesPage /> : <Login />}
+            />
+            <Route
+              path="/categories/assets"
+              element={authrized ? <AssetsPage /> : <Login />}
+            />
+            <Route
+              path="/categories/assets/:id"
+              element={authrized ? <AssetsPage /> : <Login />}
+            />
+            <Route
+              path="/addasset"
+              element={authrized ? <AddAssetForm /> : <Login />}
+            />
           </Routes>
         </div>
         <RightPane />
       </div>
+      <RegistrationForm
+        goToLogin={goToLogin}
+        show={showRegisterForm}
+        handleClose={handleCloseRegisterForm}
+        handleShow={handleShowRegisterForm}
+      />
+      <Login
+        goToSignup={goToSignup}
+        show={showLoginForm}
+        handleClose={handleCloseLoginForm}
+        handleShow={handleShowLoginForm}
+      />
     </div>
   );
 }

@@ -1,67 +1,92 @@
-.form{
-    background-color: #6327;
-    border-radius: 5px;
-    width: 40vw;
-    margin: 20px auto;
-    padding: 20px;
-    /* height: 600px; */
+.form {
+  background-color: #6327;
+  border-radius: 5px;
+  width: 40vw;
+  margin: 20px auto;
+  padding: 20px;
+  /* height: 600px; */
 }
 
-.form-body{
-    text-align: left;
-    padding: 20px 10px;
+.form-body {
+  text-align: left;
+  padding: 20px 10px;
 }
 
-.form-body > *{
-    padding: 5px;
+.form-body > * {
+  padding: 5px;
 }
 
-.form__label{
-    width: 35%;
+.form__label {
+  width: 35%;
 }
 
-.form_input{
-    /* width: 100%; */
+.form_input {
+  /* width: 100%; */
 }
 
-.footer{
-    text-align: center;
+.footer {
+  text-align: center;
 }
 
 .gradient-custom-3 {
-    /* fallback for old browsers */
-    background: #84fab0;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(132, 159, 250, 0.5), rgba(143, 190, 244, 0.3));
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(132, 167, 250, 0.5), rgba(143, 211, 244, 0.3))
-    }
-    .gradient-custom-4 {
-    /* fallback for old browsers */
-    background: #84fab0;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgb(132, 173, 250), rgba(143, 211, 244, 1));
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgb(134, 132, 250), rgba(143, 211, 244, 1))
-    }
-    
-    .navBar{
-        background-color: 0A2647;
-    }
+  /* fallback for old browsers */
+  background: #84fab0;
 
-    @media only screen and (max-width: 780PX) {
-        .customRes{
-            padding-top: 70px !important;
-        }
-    }
-    @media only screen and (max-width: 480px) {
-          .customRes{
-              padding-top: 70px !important;
-          }
-      }
-      @media only screen and (max-width: 480px) {
-      }
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(132, 159, 250, 0.5),
+    rgba(143, 190, 244, 0.3)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgba(132, 167, 250, 0.5),
+    rgba(143, 211, 244, 0.3)
+  );
+}
+.gradient-custom-4 {
+  /* fallback for old browsers */
+  background: #84fab0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgb(132, 173, 250),
+    rgba(143, 211, 244, 1)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgb(134, 132, 250),
+    rgba(143, 211, 244, 1)
+  );
+}
+.needed::before {
+    content: "Needed";
+  position: absolute;
+  background-color: red !important;
+  color: white !important;
+  font-weight: bold;
+  padding: 2px;
+  border-radius: 15px;
+}
+
+.navBar {
+  background-color: 0A2647;
+}
+
+@media only screen and (max-width: 600px) {
+  .customRes {
+    padding-top: 70px !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .customRes {
+    padding-top: 70px !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+}

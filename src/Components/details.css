@@ -68,7 +68,7 @@
   cursor: pointer;
 }
 
-@media only screen and (max-width: 780PX) {
+@media only screen and (max-width: 600px) {
 
   .rightpane {
     display: none;

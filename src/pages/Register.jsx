@@ -84,8 +84,8 @@ function RegistrationForm(props) {
                           </div>
             <div className="card-body p-3 pb-0">
               <div className="form-outline mb-2">
-                <label className="form-label" htmlFor="form3Example1cg">
-                  Name
+                <label className="form-label d-flex" htmlFor="form3Example1cg">
+                  Name <p className="text-danger"> *</p>
                 </label>
                 <input
                   name="fullName"
@@ -100,8 +100,8 @@ function RegistrationForm(props) {
               </div>
 
               <div className="form-outline mb-2">
-                <label className="form-label" htmlFor="form3Example3cg">
-                  Email
+                <label className="form-label d-flex" htmlFor="form3Example3cg">
+                  Email<p className="text-danger"> *</p>
                 </label>
                 <input
                   name="email"
@@ -116,8 +116,8 @@ function RegistrationForm(props) {
               </div>
 
               <div className="form-outline mb-2">
-                <label className="form-label" htmlFor="form3Example4cg">
-                  Password
+                <label className="form-label d-flex" htmlFor="form3Example4cg">
+                  Password<p className="text-danger"> *</p>
                 </label>
                 <input
                   name="password"
@@ -132,8 +132,8 @@ function RegistrationForm(props) {
               </div>
 
               <div className="form-outline mb-1">
-                <label className="form-label" htmlFor="form3Example4cdg">
-                  Repeat Password
+                <label className="form-label d-flex" htmlFor="form3Example4cdg">
+                  Repeat Password<p className="text-danger"> *</p>
                 </label>
                 <input
                   name="passwordConfirmation"
@@ -178,9 +178,9 @@ function RegistrationForm(props) {
             Have already an account?{" "}
             <Button
               onClick={props.goToLogin}
-              className="bg-transparent border-0  p-0 fw-bold"
+              className="bg-transparent border-0  p-0 text-dark fw-bold"
             >
-              <u className="text-decoration-none">Login</u>
+            Login            
             </Button>
           </p>
         </form>

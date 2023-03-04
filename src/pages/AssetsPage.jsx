@@ -8,7 +8,7 @@ import EditAsset from "../Components/EditAsset";
 // import { Button } from "react-bootstrap";
 import Button from "../Components/button";
 import AddAssetForm from "../Components/AddAssetForm";
-import './style.css'
+import "./style.css";
 
 function AssetsPage() {
   const [cats, setCats] = useState([]);
@@ -66,13 +66,13 @@ function AssetsPage() {
     <div className="-sm p-4 customRes">
       <div className="d-flex justify-content-between">
         <h1>{title}</h1>
-        <Button
-          className="d-flex justify-content-center align-items-center fs-6 border-0 text-decoration-none m-2 gradient-custom-4 "
-          HBC={handleShowAssetForm}
-          icon={addIc}
-        >
-          
-        </Button>
+        {token !== null && myUser[0].type == "Admin" && (
+          <Button
+            className="d-flex justify-content-center align-items-center fs-6 border-0 text-decoration-none m-2 gradient-custom-4 "
+            HBC={handleShowAssetForm}
+            icon={addIc}
+          />
+        )}
       </div>
       <table className="align-baseline table table-hover table-responsive table-striped text-center w-100">
         <thead>
@@ -82,6 +82,7 @@ function AssetsPage() {
             <th scope="col">Quantity</th>
             <th scope="col">Compnents</th>
             <th scope="col">Category</th>
+            <th scope="col">Location</th>
             {token !== null && myUser[0].type == "Admin" && (
               <th scope="col">Oprations</th>
             )}
@@ -95,14 +96,19 @@ function AssetsPage() {
                     {/* <td>{asset.id}</td> */}
                     <td scope="row">{asset.name}</td>
                     <td>
-                      {parseInt(asset.lable) < 1 || asset.lable === " " ? (
+                      {(parseInt(asset.lable) <= 1 || asset.lable === " ") && (token !== null && myUser[0].type == "Admin") ? (
+                        <div className="d-flex justify-content-end align-items-center">
+                          {asset.lable}
                         <Button
                           HBC={() => {
                             handleShow(asset);
                           }}
                           name=""
+                          bgColor="red"
+                          ml="4px"
                           icon={smallAddIc}
-                        />
+                          />
+                          </div>
                       ) : (
                         asset.lable
                       )}
@@ -113,6 +119,7 @@ function AssetsPage() {
                         return cat.id == asset.catId && cat.name;
                       })}
                     </td>
+                    <td>{asset?.location?.toString()}</td>
                     {token !== null && myUser[0].type == "Admin" && (
                       <td className="">
                         <Button
@@ -156,6 +163,7 @@ function AssetsPage() {
                         return cat.id == catasset.catId && cat.name;
                       })}
                     </td>
+                    <td>{catasset?.location?.toString()}</td>
                     {token !== null && myUser[0].type == "Admin" && (
                       <td className="">
                         <Button

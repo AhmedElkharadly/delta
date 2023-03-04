@@ -37,12 +37,13 @@ function EditAsset(props) {
       catId: props.asset?.catId,
       components: props.asset?.components,
       id: props.asset?.id,
+      location: props.asset?.location,
     });
     console.log("render");
   }, [props]);
 
   const discard = () => {
-    setInputs({ name: "", lable: "", catId: "", components: "" });
+    setInputs({ name: "", lable: "", catId: "", components: "", location: "" });
     // navigate("/categories/assets");
     props.handleClose()
     return;
@@ -53,7 +54,8 @@ function EditAsset(props) {
       inputs.name == "" &&
       inputs.components == "" &&
       inputs.lable == "" &&
-      inputs.catId == ""
+      inputs.catId == "" &&
+      inputs.location == ""
     )
       return props.handleClose();
     else {
@@ -165,6 +167,22 @@ function EditAsset(props) {
                   );
                 })}
               </datalist>
+            <div className="mb-3">
+              <label htmlFor="assetLocation" className="form-label">
+                Location
+              </label>
+              <input
+                required
+                name="location"
+                type="text"
+                className="form-control"
+                id="assetLocation"
+                placeholder={props.asset?.location}
+                value={inputs.location}
+                // onBlur={handleExistError}
+                onChange={handleInputChange}
+              />
+            </div>
             </div>
           </Modal.Body>
           <Modal.Footer>

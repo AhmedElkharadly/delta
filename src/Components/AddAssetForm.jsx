@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { useState, useEffect } from "react";
 import { addAsset } from "../redux/features/assets";
@@ -13,6 +13,7 @@ const AddAssetForm = (props) => {
     lable: 0,
     catId: 0,
     components: "",
+    location: "",
   });
 
   const categories = useSelector((state) => state.Categories?.categories);
@@ -34,13 +35,13 @@ const AddAssetForm = (props) => {
   const handleAddAssets = () => {
     dispach(addAsset(inputs));
     props.handleClose();
-    setInputs({ name: "", lable: "", catId: "", components: "" });
+    setInputs({ name: "", lable: "", catId: "", components: "", location: "" });
     navigate("/categories/assets");
   };
 
   return (
     <>
-      <Modal show={props.show} onHide={props.handleClose}>
+      <Modal show={props.show} className="pt-0 mt-0" onHide={props.handleClose}>
         <form className="dropForm">
           <Modal.Header closeButton>
             <Modal.Title>Add Asset</Modal.Title>
@@ -59,7 +60,9 @@ const AddAssetForm = (props) => {
                 >
                   Name
                 </label>
-                <input required={true} data-error = "Please accept our policy." 
+                <input
+                  required={true}
+                  data-error="Please accept our policy."
                   name="name"
                   type="email"
                   className="form-control"
@@ -112,7 +115,8 @@ const AddAssetForm = (props) => {
                   placeholder="Pick a Category..."
                   onChange={handleInputsChange}
                 />
-                <datalist id="datalistOptions"
+                <datalist
+                  id="datalistOptions"
                   name="catId"
                   onChange={handleInputsChange}
                 >
@@ -125,12 +129,25 @@ const AddAssetForm = (props) => {
                   })}
                 </datalist>
               </div>
+              <div className="mb-3">
+                <label htmlFor="assetlocation" className="form-label">
+                  Location
+                </label>
+                <input
+                  name="location"
+                  type="text"
+                  className="form-control"
+                  id="assetlocation"
+                  placeholder="Location..."
+                  onChange={handleInputsChange}
+                  aria-autocomplete="false"
+                />
+              </div>
             </div>
           </Modal.Body>
           <Modal.Footer>
             <Button
-              type="button"
-              className="text-white"
+              className="btn gradient-custom-4 border-0"
               onClick={handleAddAssets}
             >
               Add Asset
