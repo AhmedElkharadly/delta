@@ -87,7 +87,7 @@ function Login(props) {
   const handleCloseRegisterForm = () => setShowRegisterForm(false);
 
   return (
-    <div className="container d-flex flex-row-reverse justify-content-evenly align-items-center flex-wrap">
+    <div className="containerAll d-flex flex-row-reverse justify-content-evenly align-items-center flex-wrap">
       <MotionConfig transition={transition}>
         <motion.button
           className="animatedButton"
@@ -145,7 +145,7 @@ function Login(props) {
           </motion.label>
         </motion.button>
       </MotionConfig>
-            {backSVG}
+            {/* {backSVG} */}
       <form className="dropForm  d-flex align-items-center justify-content-center  p-5 ">
         <div className="w-75 d-flex flex-column align-items-center justify-content-center loginContainer">
           <Modal.Header className="d-flex w-100 align-items-center justify-content-center  ">
@@ -207,13 +207,14 @@ function Login(props) {
           <div className="d-flex flex-column align-items-center justify-content-center">
             <FacebookLoginButton
               className="w-auto"
-              onClick={() => alert("Hello")}
+              onClick={() => swal( {text: "Soon I Will Be Able To Login With FaceBook" , icon: "warning", button: false})}
             />
             <InstagramLoginButton
               className="w-auto"
-              onClick={() => alert("Hello")}
+              onClick={() => swal( {text: "Soon I Will Be Able To Login With Instgram" , icon: "warning",button: false})}
             />
           </div>
+      <div style={{height:"30px"}}></div>
         </div>
       </form>
       <RegistrationForm

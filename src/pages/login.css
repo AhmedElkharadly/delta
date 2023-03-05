@@ -1,37 +1,53 @@
-.backgroundImg{
-    position: fixed;
-    left: 0;
-    top: 0;
-    /* height: 100vh;
-    width: 100vw; */
-    z-index: -9;
+.backgroundImg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  z-index: -9;
+  /* background-image: url("/public/back.png"); */
+  /* background: cover; */
+  /* width: 100vw; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+}
+.containerAll{
+    background: linear-gradient(
+        60deg,
+        #FA7268 40%,
+        #C62368 50%,
+        #001220 70%
+      );
+}
+.loginContainer {
+  margin: 20px;
+  color: White;
+  width: 25vw !important;
+  z-index: 9;
 }
 
-.loginContainer{
-    margin: 20px;
-    color: White;
-    width: 25vw !important;
-    z-index: 9;
-
-}
-
-.container{
-    padding: 30px;
+.container {
+  padding: 30px;
 }
 
 @media only screen and (max-width: 900px) {
-    .loginContainer{
-        /* margin: 20px; */
-        /* color: White; */
-        width: 80vw !important;
-        /* z-index: 9;     */
-    }
-      }
-  @media only screen and (max-width: 480px) {
-    .customRes {
-      padding-top: 70px !important;
-    }
+  .loginContainer {
+    /* margin: 20px; */
+    /* color: White; */
+    width: 80vw !important;
+    /* z-index: 9;     */
   }
-  @media only screen and (max-width: 480px) {
+  .containerAll{
+  padding-top: 50px;
   }
-  
+}
+@media only screen and (max-width: 480px) {
+    .containerAll{
+    padding-top: 50px;
+    }
+  .customRes {
+    padding-top: 70px !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+}

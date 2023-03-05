@@ -23,7 +23,7 @@ export default function Home() {
   };
 
   return (
-    <div className="d-flex w-100 p-5 justify-content-center align-items-center flex-column customRes ">
+    <div className="d-flex  pt-4 justify-content-center align-items-center flex-column customRes ">
       <MotionConfig transition={transition}>
         <motion.button
           className="animatedButton"
@@ -33,8 +33,8 @@ export default function Home() {
           whileTap="press"
           variants={{
             rest: { scale: 1 },
-            hover: { scale: 1.5 },
-            press: { scale: 1.4 },
+            hover: { scale: 1.3 },
+            press: { scale: 1.2 },
           }}
           onHoverStart={() => {
             resetMousePosition();
@@ -74,14 +74,14 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.label
-            variants={{ hover: { scale: 0.85 }, press: { scale: 1.1 } }}
+            variants={{ hover: { scale: 0.85 }, press: { scale: 1.01 } }}
             className="labela"
           >
             {(myUser !== null && myUser !== undefined) ? ("Welcom " + myUser[0].fullName): "Welcome to Delta DashBoard"}
           </motion.label>
         </motion.button>
       </MotionConfig>
-      <div className="container mt-5 mb-3">
+      <div className="container mt-2 mb-3">
         <div className="row d-flex justify-content-evenly">
           <div className="col-md-3 p-2 mb-2 mb-2 cardContainer">
             <div className="card p-3 h-100 mb-1">
