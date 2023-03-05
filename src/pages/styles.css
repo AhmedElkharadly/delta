@@ -63,7 +63,7 @@
   bottom: -100px;
   left: -100px;
   right: -100px;
-  width: calc(100% + 300px);
+  width: calc(100% + 50px);
   pointer-events: none;
 }
 
@@ -74,6 +74,7 @@
 }
 
 .labela {
+  font-size: 2rem;
   width: 38vw;
   padding: 60px 0;
   transform: translateZ(0);

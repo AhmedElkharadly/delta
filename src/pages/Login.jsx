@@ -88,7 +88,7 @@ function Login(props) {
 
   return (
     <div className="containerAll d-flex flex-row-reverse justify-content-evenly align-items-center flex-wrap">
-      <MotionConfig transition={transition}>
+      <MotionConfig className="animationPart" transition={transition}>
         <motion.button
           className="animatedButton"
           ref={ref}
@@ -146,7 +146,7 @@ function Login(props) {
         </motion.button>
       </MotionConfig>
             {/* {backSVG} */}
-      <form className="dropForm  d-flex align-items-center justify-content-center  p-5 ">
+      <form className="dropForm  d-flex align-items-center justify-content-center  p-m-5 ">
         <div className="w-75 d-flex flex-column align-items-center justify-content-center loginContainer">
           <Modal.Header className="d-flex w-100 align-items-center justify-content-center  ">
             <Modal.Title className="fs-1">Login</Modal.Title>
@@ -214,7 +214,6 @@ function Login(props) {
               onClick={() => swal( {text: "Soon I Will Be Able To Login With Instgram" , icon: "warning",button: false})}
             />
           </div>
-      <div style={{height:"30px"}}></div>
         </div>
       </form>
       <RegistrationForm

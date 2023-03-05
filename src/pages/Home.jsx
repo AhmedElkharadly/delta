@@ -95,10 +95,7 @@ export default function Home() {
                     <h6 className="mb-0">Updated</h6> <span>1 days ago</span>
                   </div>
                 </div>
-                <div className="badge">
-                  {" "}
-                  <span>Assets</span>{" "}
-                </div>
+                
               </div>
               <div className="mt-5">
                 <h3 className="heading">
@@ -139,10 +136,6 @@ export default function Home() {
                     <h6 className="mb-0">Updated</h6> <span>4 days ago</span>
                   </div>
                 </div>
-                <div className="badge">
-                  {" "}
-                  <span>Categories</span>{" "}
-                </div>
               </div>
               <div className="mt-5">
                 <h3 className="heading">
@@ -182,10 +175,6 @@ export default function Home() {
                   <div className="ms-2 c-details">
                     <h6 className="mb-0">Updated</h6> <span>2 days ago</span>
                   </div>
-                </div>
-                <div className="badge">
-                  {" "}
-                  <span>Buildings</span>{" "}
                 </div>
               </div>
               <div className="mt-5">

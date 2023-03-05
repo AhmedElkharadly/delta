@@ -11,13 +11,8 @@
   /* background-repeat: no-repeat; */
   /* background-size: cover; */
 }
-.containerAll{
-    background: linear-gradient(
-        60deg,
-        #FA7268 40%,
-        #C62368 50%,
-        #001220 70%
-      );
+.containerAll {
+  background: linear-gradient(60deg, #fa7268 40%, #c62368 50%, #001220 70%);
 }
 .loginContainer {
   margin: 20px;
@@ -27,26 +22,40 @@
 }
 
 .container {
-  padding: 30px;
+    padding: 30px;
 }
 
+@media only screen and (max-width: 1366px) {
+.containerAll {
+  padding-top: 50px;
+  height: 100vh;
+}}
 @media only screen and (max-width: 900px) {
   .loginContainer {
-    /* margin: 20px; */
-    /* color: White; */
-    width: 80vw !important;
-    /* z-index: 9;     */
+    width: 90vw !important;
   }
-  .containerAll{
-  padding-top: 50px;
-  }
-}
-@media only screen and (max-width: 480px) {
-    .containerAll{
+  .containerAll {
     padding-top: 50px;
+    height: fit-content
+}
+}
+@media only screen and (max-width: 800px) {
+    
+    .containerAll {
+        height: fit-content;
+      padding-top: 50px;
     }
+}
+
+@media only screen and (max-width: 550px) {
+  .containerAll {
+    padding-top: 50px;
+  }
   .customRes {
     padding-top: 70px !important;
+  }
+  .animatedButton {
+    display: none !important;
   }
 }
 @media only screen and (max-width: 480px) {
