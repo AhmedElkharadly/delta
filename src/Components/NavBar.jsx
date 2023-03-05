@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser } from "../redux/features/user";
 import RegistrationForm from "../pages/Register";
-import Login from "../pages/Login";
 import UserInfo from "./UserInfo";
 import "./navbar.css";
 
@@ -65,7 +64,7 @@ const navigate = useNavigate()
           >
             <ul className="d-flex justify-content-center mb-2 mb-lg-0 me-auto navbar-nav w-100">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="#">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Home
                 </Link>
               </li>
@@ -141,7 +140,7 @@ const navigate = useNavigate()
                   </li>
                   <li>
                     <Link className="dropdown-item disabled" to="/categories">
-                      Show All Categories
+                      Show All Buildings
                     </Link>
                   </li>
                 </ul>
