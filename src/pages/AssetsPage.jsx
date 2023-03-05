@@ -1,16 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
 import { editIc, deleteIc, smallAddIc, addIc } from "../Components/svg";
-import { deleteAsset, getAssetaByCatId } from "../redux/features/assets";
-import EditAsset from "../Components/EditAsset";
-import DeleteAlert from "../Components/deleteConfirmation";
-// import { Button } from "react-bootstrap";
-import Button from "../Components/button";
-import AddAssetForm from "../Components/AddAssetForm";
-import "./style.css";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import { deleteAsset, getAssetaByCatId } from "../redux/features/assets";
+import DeleteAlert from "../Components/deleteConfirmation";
+import AddAssetForm from "../Components/AddAssetForm";
+import EditAsset from "../Components/EditAsset";
+import Button from "../Components/button";
+import "./style.css";
 
 function AssetsPage() {
   const [cats, setCats] = useState([]);
@@ -41,7 +40,7 @@ function AssetsPage() {
     setCatAssets(catAssetsState);
     setTheUser(myUser[0]);
     params.id
-      ? setTitle(cats?.filter((cat) => cat.id == params.id)[0]?.name)
+      ? setTitle(cats?.filter((cat) => cat.id === params.id)[0]?.name)
       : setTitle("All Assets");
   }, [title, params.id, deletedAsset, assets, myUser, assetsState]);
 
@@ -80,13 +79,14 @@ function AssetsPage() {
           <Button
             className="d-flex justify-content-center align-items-center fs-6 border-0 text-decoration-none m-2 gradient-custom-4 "
             HBC={handleShowAssetForm}
+            h="100%"
             icon={addIc}
           />
         )}
       </div>
       <Table className="align-baseline table table-hover table-responsive table-striped text-center w-100">
-        <Thead>
-          <Tr>
+        <Thead className="bg-dark text-white">
+          <Tr className="gredientbg">
             {/* <th scope="col">ID</th> */}
             <Th scope="col">Name</Th>
             <Th scope="col">Quantity</Th>
@@ -106,7 +106,7 @@ function AssetsPage() {
                     {/* <td>{asset.id}</td> */}
                     <Td scope="row">{asset.name}</Td>
                     <Td>
-                      {(parseInt(asset.lable) <= 1 || asset.lable === " ") &&
+                      {(parseInt(asset.lable) <= 1 || asset.lable === "") &&
                       token !== null &&
                       myUser[0].type == "Admin" ? (
                         <div className="d-flex justify-content-end align-items-center">
@@ -115,7 +115,7 @@ function AssetsPage() {
                             HBC={() => {
                               handleShow(asset);
                             }}
-                            bgColor=""
+                            p="0"
                             ml="4px"
                             icon={smallAddIc}
                           />
@@ -130,7 +130,9 @@ function AssetsPage() {
                         return cat.id == asset.catId && cat.name;
                       })}
                     </Td>
-                    <Td>{asset?.location?.toString()}</Td>
+                    <Td className="locationtd">
+                      {asset?.location?.toString()}
+                    </Td>
                     {token !== null && myUser[0].type == "Admin" && (
                       <Td className="">
                         <Button

@@ -1,21 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { deleteAsset } from "../redux/features/assets";
 
 function DeleteAlert(props) {
-  const [deletedAsset, setDeletedAsset] = useState([]);
-  const dispach = useDispatch();
-
-  const deleteAssetById = (id) => {
-    console.log(props);
-    // setDeletedAsset(deleteAsset(props.asset));
-    console.log(deletedAsset);
-    props.handleClose()
-  };
-
-
-
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>
@@ -28,22 +14,22 @@ function DeleteAlert(props) {
           </div>
         </Modal.Body>
         <Modal.Footer>
-        <Button
-              variant="secondary"
-              onMouseUp={props.handleClose}
-              onClick={props.handleClose}
-            >
-              Discard
-            </Button>
-            <Button
-              className="text-white"
-              variant="dark"
-              onClick={() => {
-                props.delete(props?.element?.id);
-              }}
-            >
-              Delete
-            </Button>
+          <Button
+            variant="secondary"
+            onMouseUp={props.handleClose}
+            onClick={props.handleClose}
+          >
+            Discard
+          </Button>
+          <Button
+            className="text-white"
+            variant="dark"
+            onClick={() => {
+              props.delete(props?.element?.id);
+            }}
+          >
+            Delete
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

@@ -1,5 +1,9 @@
 export const categories =[
     {
+        id:0,
+        name:'Category 0'
+    },
+    {
         id:1,
         name:'Category 1'
     },

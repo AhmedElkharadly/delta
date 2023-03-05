@@ -27,7 +27,7 @@ export const Assets = createSlice({
     },
     getAssetaByCatId: (state, action) => {
       state.getAssets = state?.assets?.filter((asset) => {
-        return asset.catId == action.payload;
+        return asset.catId === action.payload;
       });
     },
   },

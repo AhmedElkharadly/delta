@@ -1,14 +1,11 @@
-// In This Section I just want to know how to get the Asset That i want to Edit from all the Assets
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addCategorie } from "../redux/features/categories";
 import { deleteAsset, editAsset } from "../redux/features/assets";
 
 function EditAsset(props) {
-  const [display, sitDisplay] = useState(false);
   const [inputs, setInputs] = useState({
     name: props.asset?.name,
     lable: props.asset?.lable,
@@ -19,16 +16,9 @@ function EditAsset(props) {
 
   const assets = useSelector((state) => state.assets?.assets);
   const catigories = useSelector((state) => state.Categories?.categories);
+
   const dispach = useDispatch();
   const navigate = useNavigate();
-
-  const handleInputChange = (event) => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    setInputs({ ...inputs, [name]: value });
-  };
 
   useEffect(() => {
     setInputs({
@@ -40,6 +30,13 @@ function EditAsset(props) {
       location: props.asset?.location,
     });
   }, [props]);
+
+  const handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    setInputs({ ...inputs, [name]: value });
+  };
 
   const discard = () => {
     setInputs({ name: "", lable: "", catId: "", components: "", location: "" });
@@ -58,7 +55,6 @@ function EditAsset(props) {
       return props.handleClose();
     else {
       dispach(editAsset(inputs));
-      // navigate("/categories/assets");
       props.handleClose();
       setInputs({
         name: "",
@@ -68,7 +64,6 @@ function EditAsset(props) {
         id: "",
       });
     }
-    // console.log(assets)
   };
 
   return (
@@ -79,15 +74,6 @@ function EditAsset(props) {
             <Modal.Title>Edit Asset</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div
-              className={
-                display ? "alert alert-danger displayed" : "notDisplayed"
-              }
-            >
-              {/* {assetExist
-                ? "This Category is Already Exist "
-                : "Please Fill the Title of your Category"} */}
-            </div>
             <div className="mb-3">
               <label htmlFor="catname" className="form-label">
                 Title
@@ -101,7 +87,6 @@ function EditAsset(props) {
                 value={inputs.name}
                 onChange={handleInputChange}
                 placeholder={props?.asset?.name}
-                // onBlur={handleExistError}
               />
             </div>
 
@@ -117,7 +102,6 @@ function EditAsset(props) {
                 id="catname"
                 placeholder={props?.asset?.lable}
                 value={inputs.lable}
-                // onBlur={handleExistError}
                 onChange={handleInputChange}
               />
             </div>
@@ -133,7 +117,6 @@ function EditAsset(props) {
                 id="catname"
                 placeholder={props.asset?.components}
                 value={inputs.components}
-                // onBlur={handleExistError}
                 onChange={handleInputChange}
               />
             </div>
@@ -149,8 +132,6 @@ function EditAsset(props) {
                 className="form-control"
                 id="assetCategory"
                 placeholder={props?.asset?.catId}
-                // value={inputs.catId}
-                // onBlur={handleExistError}
                 onChange={handleInputChange}
               />
               <datalist
@@ -178,7 +159,6 @@ function EditAsset(props) {
                   id="assetLocation"
                   placeholder={props.asset?.location}
                   value={inputs.location}
-                  // onBlur={handleExistError}
                   onChange={handleInputChange}
                 />
               </div>

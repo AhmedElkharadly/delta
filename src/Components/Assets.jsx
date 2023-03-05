@@ -1,6 +1,7 @@
-import "./assets.css";
+import React from "react";
 import Button from "./button";
 import { editIc, deleteIc } from "./svg";
+import "./assets.css";
 
 const Assets = (props) => {
   return (

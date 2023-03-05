@@ -12,7 +12,7 @@ export const Categories = createSlice({
     },
     deleteCategorie: (state, action) => {
       state.categories = state.categories.filter(
-        (categorie) => categorie.id != action.payload
+        (categorie) => categorie.id !== action.payload
       );
     },
     editCategorie: (state, action) => {

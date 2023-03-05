@@ -1,7 +1,7 @@
 export const assets = [
   {
     name: "Beds",
-    catId: "1",
+    catId: "0",
     lable: "50",
     id: "0",
     components: ["woods", "cotton"],

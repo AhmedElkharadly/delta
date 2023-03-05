@@ -7,12 +7,16 @@
   /* height: 600px; */
 }
 
-  tr {
-border: none !important;
+tr {
+  border: none !important;
 }
 
-.responsiveTable{
-  /* border: 1px solid black; */
+.locationtd {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.responsiveTable {
 }
 .form-body {
   text-align: left;
@@ -83,6 +87,14 @@ border: none !important;
 
 .navBar {
   background-color: 0A2647;
+}
+
+thead{
+  border-radius: 10px!important
+}
+
+.gredientbg {
+  background: linear-gradient(60deg, #61dafb 0%, #d6cbf6 30%, #f2056f 70%);
 }
 
 @media only screen and (max-width: 750px) {

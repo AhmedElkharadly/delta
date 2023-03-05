@@ -1,34 +1,24 @@
-import "./categories.css";
-import { Modal } from "react-bootstrap";
-import {
-  twiticon,
-  homeic,
-  exploreic,
-  notificationic,
-  messagesic,
-  profileic,
-  catIc,
-  listic,
-  moreic,
-  tweetic,
-} from "./svg";
+import React from "react";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getAssetaByCatId } from "../redux/features/assets";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { deleteCategorie } from "../redux/features/categories";
 import DeleteAlert from "./deleteConfirmation";
+import { catIc } from "./svg";
+import "./categories.css";
 
 function Categories(props) {
   const [assetsNum, setAssetsNum] = useState(0);
-  const assets = useSelector((state) => state.assets?.assets);
   const [userExist, setUserExist] = useState(false);
-  const token = localStorage.getItem("token");
-  const [showDelete, setShowDelete] = useState(false )
+  const [showDelete, setShowDelete] = useState(false);
   const [editedCategory, setEditedCategory] = useState();
 
+  const assets = useSelector((state) => state.assets?.assets);
   const myUser = useSelector((state) => state.login?.user);
+
+  const token = localStorage.getItem("token");
   const dispach = useDispatch();
+
   const assetsFilter = () => {
     setAssetsNum(
       assets.filter((asset) => {
@@ -40,29 +30,19 @@ function Categories(props) {
   useEffect(() => {
     assetsFilter();
     token ? setUserExist(true) : setUserExist(false);
-    console.log(props)
-    console.log(editedCategory)
-    setEditedCategory(props?.cat)
+    console.log(props);
+    console.log(editedCategory);
+    setEditedCategory(props?.cat);
   }, [localStorage.length]);
 
-  const handleDeletCategory = (id) => {
+  const handleDeletCategory = (id) =>
     dispach(deleteCategorie(editedCategory.id));
-  };
-
-  const handleEditCategory = (id) => {
-    // dispac(id));
-  };
-
-  const handleShowDeleteConfrmation = (cat) => {
-    setShowDelete(true);
-  };
-  const handleCloseDeleteConfirmation = () => {
-    setShowDelete(false);
-  };
+  const handleShowDeleteConfrmation = (cat) => setShowDelete(true);
+  const handleCloseDeleteConfirmation = () => setShowDelete(false);
 
   return (
     <div
-      className="cardContainer px-3 py-3"
+      className="container cardContainer  px-3 py-3"
       style={{
         backgroundColor: props.pBgColor,
         width: props.w,
@@ -70,13 +50,16 @@ function Categories(props) {
       }}
     >
       {userExist && myUser[0].type == "Admin" && (
-        <Modal.Header
-          className="text-centerd-flex justify-content-end "
-          closeButton
-          onClick={() => {
-            handleShowDeleteConfrmation(editedCategory);
-          }}
-        ></Modal.Header>
+        <div className="w-100 d-flex justify-content-end">
+          <button
+            type="button"
+            onClick={() => {
+              handleShowDeleteConfrmation(editedCategory);
+            }}
+            className="btn-close"
+            aria-label="Close"
+          ></button>
+        </div>
       )}
       <h3
         className="pCat"

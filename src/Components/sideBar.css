@@ -1,5 +1,4 @@
 .leftpane {
-
   padding-left: 25px;
   padding-right: 11rem;
 }
@@ -23,16 +22,14 @@ header {
   margin-bottom: 2em;
   border-radius: 8px;
 }
-.logo6{
-
+.logo6 {
   height: 1.3em;
   margin-right: 0.3em;
 }
 .logo5 {
   height: 1.3em;
-  margin-right: 0.3em;
+  margin: 0.3em;
 }
-
 
 /* nav {
   height: 50vh;
@@ -50,18 +47,35 @@ nav > * {
   color: rgba(255, 255, 255, 0.176);
   font-size: 1.3em;
   /* width: 100%; */
-  cursor: pointer;
-  border-radius: .5em;
+  /* cursor: pointer; */
+  border-radius: 0.5em;
 }
-.hieght-vh{
-  height: 70vh;
+.hieght-vh {
+  height: 80vh;
 }
-nav > *:hover,
+nav >,
 .span:hover {
   color: #1da0f252;
   background: #a3a3a315;
   transition: 0.3s ease-out;
   /* color: white ; */
+}
+
+.child {
+  width: 110%;
+  background-color: rgba(255, 255, 255, 0.064);
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: small;
+  position: relative;
+  z-index: 1;
+  display: none;
+}
+
+.parent:hover .child {
+  display: block;
 }
 
 @media only screen and (max-width: 750px) {
@@ -70,9 +84,9 @@ nav > *:hover,
   }
 }
 @media only screen and (max-width: 480px) {
-    .leftpane {
-      display: none;
-    }
+  .leftpane {
+    display: none;
+  }
 }
 @media only screen and (max-width: 480px) {
 }

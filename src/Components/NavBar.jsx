@@ -1,17 +1,16 @@
-import React, { useDebugValue, useEffect, useState } from "react";
-import "./navbar.css";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import Login from "../pages/Login";
-import RegistrationForm from "../pages/Register";
 import { deleteUser } from "../redux/features/user";
+import RegistrationForm from "../pages/Register";
+import Login from "../pages/Login";
 import UserInfo from "./UserInfo";
+import "./navbar.css";
 
 function NavBar(props) {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
-  const [showLoginForm, setShowLoginForm] = useState(false);
   const [localS, setLocalS] = useState(false);
-
+const navigate = useNavigate()
   const catState = useSelector((state) => state.Categories?.categories);
 
   const user = useSelector((state) => state?.login?.user);
@@ -25,11 +24,7 @@ function NavBar(props) {
   const handleCloseRegisterForm = () => {
     setShowRegisterForm(false);
   };
-  const handleCloseLoginForm = () => {
-    setShowLoginForm(false);
-  };
   const handleShowRegisterForm = () => setShowRegisterForm(true);
-  const handleShowLoginForm = () => setShowLoginForm(true);
 
   const signOut = () => {
     dispach(deleteUser());
@@ -37,12 +32,11 @@ function NavBar(props) {
     setLocalS(false);
   };
   const goToLogin = () => {
-    setShowLoginForm(true);
+    navigate("/login");
     setShowRegisterForm(false);
   };
   const goToSignup = () => {
     setShowRegisterForm(true);
-    setShowLoginForm(false);
   };
 
   return (
@@ -115,7 +109,7 @@ function NavBar(props) {
                   </li>
                 </ul>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown parentt">
                 <Link
                   className="nav-link dropdown-toggle disabled"
                   to="/categories"
@@ -126,6 +120,7 @@ function NavBar(props) {
                 >
                   Buildings
                 </Link>
+                <span className="childd">I am disabled for while</span>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   {catState.map((cat, index) => {
                     if (index <= 3)
@@ -156,7 +151,7 @@ function NavBar(props) {
                   <div className="nav-link" tabIndex="-1" aria-disabled="true">
                     <div
                       className="nav-link"
-                      onClick={handleShowLoginForm}
+                      onClick={goToLogin}
                       tabIndex="-1"
                       aria-disabled="true"
                     >
@@ -191,12 +186,6 @@ function NavBar(props) {
         show={showRegisterForm}
         handleClose={handleCloseRegisterForm}
         handleShow={handleShowRegisterForm}
-      />
-      <Login
-        goToSignup={goToSignup}
-        show={showLoginForm}
-        handleClose={handleCloseLoginForm}
-        handleShow={handleShowLoginForm}
       />
     </div>
   );

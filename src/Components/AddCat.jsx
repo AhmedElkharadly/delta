@@ -1,8 +1,8 @@
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import { addCategorie } from "../redux/features/categories";
 
 function AddCat(props) {
@@ -10,6 +10,7 @@ function AddCat(props) {
   const [inputs, setInputs] = useState({ name: "" });
   const [catExist, setCatExist] = useState(false);
 
+  //get categories from state
   const catState = useSelector((state) => state.Categories?.categories);
   const dispach = useDispatch();
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ function AddCat(props) {
     navigate("/categories");
     return;
   };
+
   const handleExistError = () => {
     catState?.map((cat) => {
       if (inputs.name === cat.name) {
@@ -44,7 +46,11 @@ function AddCat(props) {
   const handleSubmit = () => {
     handleExistError();
     if (catExist !== true && display !== true && inputs.name !== "")
-      return dispach(addCategorie(inputs)),  props.handleClose(), setInputs({name:""});
+      return (
+        dispach(addCategorie(inputs)),
+        props.handleClose(),
+        setInputs({ name: "" })
+      );
   };
 
   return (
@@ -57,7 +63,7 @@ function AddCat(props) {
           <Modal.Body>
             <div
               className={
-                display ? "alert alert-danger displayed" : "notDisplayed"
+                display ? "alert alert-danger displayed" : "visually-hidden"
               }
             >
               {catExist

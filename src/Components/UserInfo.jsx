@@ -18,7 +18,7 @@ function UserInfo() {
     <div className="pt-2 text-center ">
       <h6>
         {notificationic}
-        {localStorage.key('token') == null ? "Delta Dashboard" : "Hello, " + myUser[0].fullName +".." } 
+        {(localStorage.key('token') == null) ? "Delta Dashboard" : "Hello, " + myUser[0]?.fullName +".." } 
       </h6>
     </div>
   );

@@ -1,28 +1,15 @@
-    
-
 .rcButton{
-    /* display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    color: black; */
+    
     background-color: transparent;
-        /* width: 200px; */
-    /* height: 100%; */
     border-radius: 15px;
     border:none;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 15px;
     font-weight: 700;
     letter-spacing: .5px;
-    box-shadow: ;
-    /* margin: 10px 8px 0 0; */
-    /* margin-top: 30px; */
 }
 .rcButton:hover{
-    /* border: .01px solid rgba(0, 0, 0, 0.616); */
     color: #1da1f2;
-    /* background-color: rgba(8, 8, 8, 0.815)!important; */
     cursor: pointer;
     transition: .2s ;
 }

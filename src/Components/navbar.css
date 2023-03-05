@@ -4,6 +4,24 @@
 .responsiveNavBar{
     display: none;
 }
+.childd {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.064);
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: small;
+    z-index: 1;
+    display: none;
+    position: absolute;
+    top: .5em;
+    right: 1rem;
+  }
+  
+  .parentt:hover .childd {
+    display: block;
+  }
 
 @media only screen and (max-width: 750px) {
     .responsiveNavBar{

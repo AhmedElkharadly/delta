@@ -13,7 +13,7 @@ export const department = createSlice({
     },
     deleteDepartment: (state, action) => {
       state.departments = state.departments.filter(
-        (dep) => dep.id != action.payload
+        (dep) => dep.id !== action.payload
       );
     },
     editDepartment: (state, action) => {
