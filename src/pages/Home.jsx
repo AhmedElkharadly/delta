@@ -23,7 +23,7 @@ export default function Home() {
   };
 
   return (
-    <div className="d-flex w-100 pt-5 justify-content-center align-items-center flex-column customRes ">
+    <div className="d-flex w-100 p-5 justify-content-center align-items-center flex-column customRes ">
       <MotionConfig transition={transition}>
         <motion.button
           className="animatedButton"

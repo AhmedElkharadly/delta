@@ -69,13 +69,13 @@ function Login(props) {
   return (
     <>
       <div className="container">
-        <div className="backgroundImg">{backSVG}</div>
+        <div>{backSVG}</div>
         <form className="dropForm  d-flex align-items-center justify-content-center  p-5 ">
-          <div className="w-50 d-flex flex-column align-items-center justify-content-center">
-            <Modal.Header className="d-flex  align-items-center justify-content-center  ">
+          <div className="w-75 d-flex flex-column align-items-center justify-content-center">
+            <Modal.Header className="d-flex w-100 align-items-center justify-content-center  ">
               <Modal.Title>Login</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className="w-100">
               <div className="card-body p-3">
                 <div className="form-outline mb-2">
                   <label className="form-label" htmlFor="form3Example3cg">
@@ -85,7 +85,7 @@ function Login(props) {
                     name="email"
                     type="email"
                     id="form3Example3cg"
-                    className="form-control "
+                    className="form-control w-100"
                     onChange={handleInputChange}
                     required
                     minLength="5"
@@ -101,7 +101,7 @@ function Login(props) {
                     name="password"
                     type="password"
                     id="form3Example4cg"
-                    className="form-control "
+                    className="form-control w-100"
                     onChange={handleInputChange}
                     required
                     minLength="8"

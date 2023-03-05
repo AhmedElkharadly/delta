@@ -1,15 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { editIc, deleteIc, smallAddIc, addIc } from "../Components/svg";
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import { deleteAsset, getAssetaByCatId } from "../redux/features/assets";
-import DeleteAlert from "../Components/deleteConfirmation";
-import AddAssetForm from "../Components/AddAssetForm";
 import EditAsset from "../Components/EditAsset";
+import DeleteAlert from "../Components/deleteConfirmation";
+// import { Button } from "react-bootstrap";
 import Button from "../Components/button";
+import AddAssetForm from "../Components/AddAssetForm";
 import "./style.css";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import { motion } from "framer-motion-3d";
 
 function AssetsPage() {
   const [cats, setCats] = useState([]);
@@ -40,7 +42,7 @@ function AssetsPage() {
     setCatAssets(catAssetsState);
     setTheUser(myUser[0]);
     params.id
-      ? setTitle(cats?.filter((cat) => cat.id === params.id)[0]?.name)
+      ? setTitle(cats?.filter((cat) => cat.id == params.id)[0]?.name)
       : setTitle("All Assets");
   }, [title, params.id, deletedAsset, assets, myUser, assetsState]);
 
@@ -85,7 +87,7 @@ function AssetsPage() {
         )}
       </div>
       <Table className="align-baseline table table-hover table-responsive table-striped text-center w-100">
-        <Thead className="bg-dark text-white">
+        <Thead className='bg-dark text-white'>
           <Tr className="gredientbg">
             {/* <th scope="col">ID</th> */}
             <Th scope="col">Name</Th>
@@ -130,9 +132,7 @@ function AssetsPage() {
                         return cat.id == asset.catId && cat.name;
                       })}
                     </Td>
-                    <Td className="locationtd">
-                      {asset?.location?.toString()}
-                    </Td>
+                    <Td className="locationtd">{asset?.location?.toString()}</Td>
                     {token !== null && myUser[0].type == "Admin" && (
                       <Td className="">
                         <Button

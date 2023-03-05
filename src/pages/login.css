@@ -1,10 +1,7 @@
 .backgroundImg{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: max-content;
     z-index: -9;
-    background-attachment: fixed;
-    overflow: hidden;
 }

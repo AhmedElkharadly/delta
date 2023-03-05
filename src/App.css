@@ -1,5 +1,7 @@
 body {
   /* background-color:  231, 169, 169); */
+  font-family: "Cairo";
+  font-weight: 900;
 }
 .App {
   /* text-align: center; */
