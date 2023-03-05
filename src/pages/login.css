@@ -1,7 +1,37 @@
 .backgroundImg{
     position: fixed;
-    top: 0;
     left: 0;
-    width: max-content;
+    top: 0;
+    /* height: 100vh;
+    width: 100vw; */
     z-index: -9;
 }
+
+.loginContainer{
+    margin: 20px;
+    color: White;
+    width: 25vw !important;
+    z-index: 9;
+
+}
+
+.container{
+    padding: 30px;
+}
+
+@media only screen and (max-width: 900px) {
+    .loginContainer{
+        /* margin: 20px; */
+        /* color: White; */
+        width: 80vw !important;
+        /* z-index: 9;     */
+    }
+      }
+  @media only screen and (max-width: 480px) {
+    .customRes {
+      padding-top: 70px !important;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+  }
+  

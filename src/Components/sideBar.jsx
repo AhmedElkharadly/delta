@@ -25,7 +25,7 @@ const LeftPane = (props) => {
   const signOut = () => {
     dispach(deleteUser());
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/login");
     setLocalS(false);
   };
   return (

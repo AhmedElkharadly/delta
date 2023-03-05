@@ -53,7 +53,7 @@ function App() {
           <Route path="/categories/assets" element={<Login />} />
           <Route path="/categories/assets/:id" element={<Login />} />
           <Route path="/addasset" element={<Login />} />
-          <Route exact path="/" element={<Login />} />
+          <Route exact path="/login" element={<Login />} />
           <Route path="/signup" element={<RegistrationForm />} />
         </Routes>
       )}

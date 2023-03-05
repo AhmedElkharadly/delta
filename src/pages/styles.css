@@ -1,13 +1,15 @@
 .animatedButton {
   --purple: #db07d1;
   --pink: #f2056f;
-  --blue: #61dafb;
-
+  --blue: #07a7d3;
+  height: 130px;
+  width: fit-content;
+  margin: 30px;
   appearance: none;
   border: none;
   cursor: pointer;
-  background-color: #acc7ed;
-  color: #fff;
+  background-color: #2660b3;
+  color: white;
   border-radius: 60px;
   outline: none;
   margin: 0;
@@ -41,7 +43,7 @@
 .blush {
   position: absolute;
   bottom: -15px;
-  width: 100px;
+  width: 80px;
   height: 30px;
   filter: blur(20px);
 }
@@ -62,7 +64,7 @@
   bottom: -100px;
   left: -100px;
   right: -100px;
-  width: calc(100% + 200px);
+  width: calc(100% + 300px);
   pointer-events: none;
 }
 
@@ -74,7 +76,7 @@
 
 .labela {
   width: 38vw;
-  padding: 20px 0;
+  padding: 100px 0;
   transform: translateZ(0);
   font-weight: 700;
   z-index: 1;
@@ -332,6 +334,14 @@
   .customRes {
     padding-top: 100px !important;
   }
+  .animatedButton {
+  width: 80vw !important;
+    padding: 20px;
+  }
 }
 @media only screen and (max-width: 480px) {
+  .animatedButton {
+  width: 80vw !important;
+    padding: 20px;
+  }
 }
